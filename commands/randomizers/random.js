@@ -18,7 +18,12 @@ module.exports = {
 				.setName('integer')
 				.setDescription('Responds with a random integer')
 				.addIntegerOption(option => option.setName('maximum').setDescription('Maximum Limit').setRequired(true))
-				.addIntegerOption(option => option.setName('minimum').setDescription('Minimum Limit').setRequired(true))),
+				.addIntegerOption(option => option.setName('minimum').setDescription('Minimum Limit').setRequired(true)))
+		.addSubcommand(subcommand =>
+			subcommand
+				.setName('letter')
+				.setDescription('Responds with a random english letter')
+				.addIntegerOption(option => option.setName('amount').setDescription('Amount of letters'))),
 	async execute(interaction) {
 		if (interaction.options.getSubcommand() === 'color') {
 			const r = Math.round(Math.random() * 255);
@@ -55,7 +60,20 @@ module.exports = {
 			}
 
 			await interaction.reply(`${word}`);
-		} else if (interaction.options.getSubcommand() === 'integer') {
+		}else if (interaction.options.getSubcommand() === 'letter') {
+			const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+
+			var amount = interaction.options.getInteger('amount')
+
+			var letter = letters[Math.round(Math.random() * (letters.length - 1))]
+
+			while (amount > 1) {
+				letter = letter + ", " + letters[Math.round(Math.random() * (letters.length - 1))]
+				amount--
+			}
+
+			await interaction.reply(`${letter}`);
+		 } else if (interaction.options.getSubcommand() === 'integer') {
 			const min = interaction.options.getInteger('minimum');
 			const max = interaction.options.getInteger('maximum');
 			const integer = Math.round(Math.random() * (max - min)) + min;

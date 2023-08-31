@@ -46,6 +46,15 @@ module.exports = {
 				{ name: 'Syntax:', value: '/random word [amount]' },
 			)
 		}
+		else if (command === 'random letter') {
+			var embed = new EmbedBuilder()
+			.setColor(0x000000)
+			.setTitle('/random letter')
+			.setDescription('Replies to you with \'amount\' amount of English letters (default is 1).')
+			.addFields(
+				{ name: 'Syntax:', value: '/random letter [amount]' },
+			)
+		}
 		else if (command === 'random integer') {
 			var embed = new EmbedBuilder()
 			.setColor(0x000000)
@@ -131,6 +140,7 @@ module.exports = {
 				{ name: 'ping', value: '/ping' },
 				{ name: 'random color', value: '/random color' },
 				{ name: 'random word', value: '/random word [amount]' },
+				{ name: 'random letter', value: '/random letter [amount]' },
 				{ name: 'random integer', value: '/random integer <minimum> <maximum>' },
 				{ name: 'tellraw', value: '/tellraw <message>' },
 				{ name: 'suggest', value: '/suggest <suggestion>' },
