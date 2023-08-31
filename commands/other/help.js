@@ -19,6 +19,15 @@ module.exports = {
 				{ name: 'Syntax:', value: '/convert-base <input> <base> <to-base>' },
 			)
 		}
+		else if (command === 'regex-slicer') {
+			var embed = new EmbedBuilder()
+			.setColor(0x000000)
+			.setTitle('/regex-slicer')
+			.setDescription('Removes text from the \'input\' parameter matching the regex pattern given in the \'regex\' parameter.')
+			.addFields(
+				{ name: 'Syntax:', value: '/regex-slicer <input> <regex>' },
+			)
+		}
 		else if (command === 'ping') {
 			var embed = new EmbedBuilder()
 			.setColor(0x000000)
@@ -96,7 +105,7 @@ module.exports = {
 			var embed = new EmbedBuilder()
 			.setColor(0x000000)
 			.setTitle('/help')
-			.setDescription('Sends an embed with a list of commands, or with help for a specific command if specified in the \'command\' parameter')
+			.setDescription('Sends an embed with a list of commands, or with help for a specific command if specified in the \'command\' parameter.')
 			.addFields(
 				{ name: 'Syntax:', value: '/help [command]' },
 			)
@@ -136,6 +145,7 @@ module.exports = {
 			.addFields(
 				{ name: 'help', value: '/help [command]' },
 				{ name: 'convert-base', value: '/convert-base <input> <base> <to-base>' },
+				{ name: 'regex-slicer', value: '/regex-slicer <input> <regex>' },
 				{ name: 'kill', value: '/kill [method]' },
 				{ name: 'ping', value: '/ping' },
 				{ name: 'random color', value: '/random color' },
