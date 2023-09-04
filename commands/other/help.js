@@ -19,6 +19,15 @@ module.exports = {
 				{ name: 'Syntax:', value: '/convert-base <input> <base> <to-base>' },
 			)
 		}
+		else if (command === 'change-case') {
+			var embed = new EmbedBuilder()
+			.setColor(0x000000)
+			.setTitle('/change-case')
+			.setDescription('Takes a string from the \'text\' parameter and converts it to either uppercase or lowercase based on what\'s inputed in the \'case\' parameter.')
+			.addFields(
+				{ name: 'Syntax:', value: '/change-case <text> <case>' },
+			)
+		}
 		else if (command === 'regex-slicer') {
 			var embed = new EmbedBuilder()
 			.setColor(0x000000)
@@ -145,6 +154,7 @@ module.exports = {
 			.addFields(
 				{ name: 'help', value: '/help [command]' },
 				{ name: 'convert-base', value: '/convert-base <input> <base> <to-base>' },
+				{ name: 'change-case', value: '/change-case <text> <case>' },
 				{ name: 'regex-slicer', value: '/regex-slicer <input> <regex>' },
 				{ name: 'kill', value: '/kill [method]' },
 				{ name: 'ping', value: '/ping' },
