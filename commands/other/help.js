@@ -3,7 +3,7 @@ const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('help')
-		.setDescription('Convert the base of an integer')
+		.setDescription('Get info on commands and how to use them')
 		.addStringOption(option =>
 			option.setName('command')
 				.setDescription('Specify a command you need help with')),
