@@ -82,13 +82,13 @@ module.exports = {
 				{ name: 'Syntax:', value: '/suggest <suggestion>' },
 			)
 		}
-		else if (command === 'tellraw') {
+		else if (command === 'echo') {
 			var embed = new EmbedBuilder()
 			.setColor(0x000000)
-			.setTitle('/tellraw')
-			.setDescription('Send the message you told it in the \'message\' parameter.')
+			.setTitle('/echo')
+			.setDescription('Repeats the message you sent in the \'message\' parameter.')
 			.addFields(
-				{ name: 'Syntax:', value: '/tellraw <message>' },
+				{ name: 'Syntax:', value: '/echo <message>' },
 			)
 		}
 		else if (command === 'kill') {
@@ -152,7 +152,7 @@ module.exports = {
 				{ name: 'random word', value: '/random word [amount]' },
 				{ name: 'random letter', value: '/random letter [amount]' },
 				{ name: 'random integer', value: '/random integer <minimum> <maximum>' },
-				{ name: 'tellraw', value: '/tellraw <message>' },
+				{ name: 'echo', value: '/echo <message>' },
 				{ name: 'suggest', value: '/suggest <suggestion>' },
 				{ name: 'status', value: '/status <status>' },
 				{ name: 'msg', value: '/msg <user> <message> [anonymous]' },
