@@ -108,6 +108,7 @@ module.exports = {
 			.addFields(
 				{ name: 'Syntax:', value: '/kill <user> [method]' },
 				{ name: 'Valid Method Values:', value: 'random, generic, player generic, melee, ranged, cactus, cactus escape, fall, hit ground too hard, hit ground too hard escape, fell off ladder, fell off vines, fell off weeping vines, fell off twisting vines, fell off scaffolding, fell while climbing, fell out of water, doomed fall, void, void escape, magic, magic escape, player magic, explosion, player explosion, starvation, starve whilst fighting, lightning, lightning whilst fighting, wither, wither whilst fighting, firework, berry bush, berry bush escape, lava, lava escape, magma, magma escape, drowning, drowning escape, freezing, freezing escape, fire, burning, burned whilst fighting, fire whilst fighting, kinetic energy, kinetic energy escape, anvil, falling block, suffocation, suffocated whilst fighting, trident, stalagmite, stalagmite whilst fighting, stalactite, bed, cramming, cramming escape, thorns, blaze, bee, warden, wither skull, world border, world border whilst fighting, dehydration, dehydration escape, command, command whilst fighting, snowball' },
+				{ name: 'Note:', value: 'Messages with \'whilst\' in it will likely be changed to \'while\' in the future due to an update to them in Minecraft 1.20.2' },
 			)
 		}
 		else if (command === 'help') {

@@ -61,7 +61,7 @@ module.exports = {
 		else if (method === 'fire') {message = `${user} went up in flames`}
 		else if (method === 'burning') {message = `${user} burned to death`}
 		else if (method === 'burned whilst fighting') {message = `${user} was burnt to a crisp whilst fighting ${interaction.user}`}
-		else if (method === 'firewhilst fighting') {message = `${user} walked into fire whilst fighting ${interaction.user}`}
+		else if (method === 'fire whilst fighting') {message = `${user} walked into fire whilst fighting ${interaction.user}`}
 		else if (method === 'kinetic energy') {message = `${user} experienced kinetic energy`}
 		else if (method === 'kinetic energy escape') {message = `${user} experienced kinetic energy whilst trying to escape ${interaction.user}`}
 		else if (method === 'anvil') {message = `${user} was squashed by a falling anvil`}
