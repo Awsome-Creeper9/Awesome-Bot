@@ -148,6 +148,15 @@ module.exports = {
 				{ name: 'Valid Choice Values:', value: 'rock, paper, scissors' },
 			)
 		}
+		else if (command === 'timer') {
+			var embed = new EmbedBuilder()
+			.setColor(0x000000)
+			.setTitle('/timer')
+			.setDescription('Set a timer for \'amount\' \'interval-types\', you can also feed it a reason so that you can remember what the timer was for.')
+			.addFields(
+				{ name: 'Syntax:', value: '/timer <interval-type> <amount> [reason]' },
+			)
+		}
 		else {
 			var embed = new EmbedBuilder()
 			.setColor(0x000000)
@@ -168,6 +177,7 @@ module.exports = {
 				{ name: 'status', value: '/status <status>' },
 				{ name: 'msg', value: '/msg <user> <message> [anonymous]' },
 				{ name: 'rps', value: '/rps <choice>' },
+				{ name: 'timer', value: '/timer <interval-type> <amount> [reason]' },
 			)
 		}
 		
