@@ -27,6 +27,7 @@ module.exports = {
 		const type = interaction.options.getString('interval-type');
 		const amount = interaction.options.getNumber('amount');
 		const reason = interaction.options.getString('reason');
+		let timestamp = Date.now();
 		let time = 0;
 
 		if (type === 'second') {
@@ -44,19 +45,23 @@ module.exports = {
 		else if (type === 'week') {
 			time = amount * 1000 * 60 * 60 * 24 * 7;
 		}
+		timestamp += time
+		timestamp = parseInt(timestamp/1000)
 
 		if (!reason) {
-			await interaction.reply({ content: `Your \`${amount} ${type}\` timer has been set!`});
+			await interaction.reply({ content: `Your \`${amount} ${type}\` timer has been set! It ends <t:${timestamp}:R>.`});
 			setTimeout(async () => {
 				if (currentChannel) {await currentChannel.send(`${interaction.user}, your \`${amount} ${type}\` timer has ended!`);}
 				else {await await interaction.client.users.send(interaction.user.id, `${interaction.user}, your \`${amount} ${type}\` timer has ended!`);}
+				await interaction.editReply({ content: `Your \`${amount} ${type}\` timer has ended! It ended <t:${timestamp}:R>.`});
 			}, time)
 		}
 		else {
-			await interaction.reply({ content: `Your \`${amount} ${type}\` timer for \`${reason}\` has been set!`});
+			await interaction.reply({ content: `Your \`${amount} ${type}\` timer for \`${reason}\` has been set! It ends <t:${timestamp}:R>.`});
 			setTimeout(async () => {
 				if (currentChannel) {await currentChannel.send(`${interaction.user}, your \`${amount} ${type}\` timer for \`${reason}\` has ended!`);}
 				else {await await interaction.client.users.send(interaction.user.id, `${interaction.user}, your \`${amount} ${type}\` timer for \`${reason}\` has ended!`);}
+				await interaction.editReply({ content: `Your \`${amount} ${type}\` timer for \`${reason}\` has ended! It ended <t:${timestamp}:R>.`});
 			}, time)
 		}
 	},
