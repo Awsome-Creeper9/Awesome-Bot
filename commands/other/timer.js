@@ -53,7 +53,6 @@ module.exports = {
 			setTimeout(async () => {
 				if (currentChannel) {await currentChannel.send(`${interaction.user}, your \`${amount} ${type}\` timer has ended!`);}
 				else {await await interaction.client.users.send(interaction.user.id, `${interaction.user}, your \`${amount} ${type}\` timer has ended!`);}
-				await interaction.editReply({ content: `Your \`${amount} ${type}\` timer has ended! It ended <t:${timestamp}:R>.`});
 			}, time)
 		}
 		else {
@@ -61,7 +60,6 @@ module.exports = {
 			setTimeout(async () => {
 				if (currentChannel) {await currentChannel.send(`${interaction.user}, your \`${amount} ${type}\` timer for \`${reason}\` has ended!`);}
 				else {await await interaction.client.users.send(interaction.user.id, `${interaction.user}, your \`${amount} ${type}\` timer for \`${reason}\` has ended!`);}
-				await interaction.editReply({ content: `Your \`${amount} ${type}\` timer for \`${reason}\` has ended! It ended <t:${timestamp}:R>.`});
 			}, time)
 		}
 	},
