@@ -23,6 +23,7 @@ module.exports = {
 			option.setName('reason')
 				.setDescription('Reason for the timer')),
 	async execute(interaction) {
+		const currentChannel = interaction.channel;
 		const type = interaction.options.getString('interval-type');
 		const amount = interaction.options.getNumber('amount');
 		const reason = interaction.options.getString('reason');
@@ -45,15 +46,17 @@ module.exports = {
 		}
 
 		if (!reason) {
-			await interaction.reply({ content: `Your \`${amount} ${type}\` timer has been set!`, ephemeral: true });
-			setTimeout(() => {
-				interaction.followUp({ content: ` ${interaction.user}, your \`${amount} ${type}\` timer has ended!`, ephemeral: true })
+			await interaction.reply({ content: `Your \`${amount} ${type}\` timer has been set!`});
+			setTimeout(async () => {
+				if (currentChannel) {await currentChannel.send(`${interaction.user}, your \`${amount} ${type}\` timer has ended!`);}
+				else {await await interaction.client.users.send(interaction.user.id, `${interaction.user}, your \`${amount} ${type}\` timer has ended!`);}
 			}, time)
 		}
 		else {
-			await interaction.reply({ content: `Your \`${amount} ${type}\` timer for \`${reason}\` has been set!`, ephemeral: true });
-			setTimeout(() => {
-				interaction.followUp({ content: ` ${interaction.user}, your \`${amount} ${type}\` timer for \`${reason}\` has ended!`, ephemeral: true })
+			await interaction.reply({ content: `Your \`${amount} ${type}\` timer for \`${reason}\` has been set!`});
+			setTimeout(async () => {
+				if (currentChannel) {await currentChannel.send(`${interaction.user}, your \`${amount} ${type}\` timer for \`${reason}\` has ended!`);}
+				else {await await interaction.client.users.send(interaction.user.id, `${interaction.user}, your \`${amount} ${type}\` timer for \`${reason}\` has ended!`);}
 			}, time)
 		}
 	},
