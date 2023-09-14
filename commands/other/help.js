@@ -50,9 +50,9 @@ module.exports = {
 			var embed = new EmbedBuilder()
 			.setColor(0x000000)
 			.setTitle('/random color')
-			.setDescription('Replies with an embed of a random color.')
+			.setDescription('Replies with an image of a random color (and its hex). You may also specify if you want to incluse transparency in the \'alpha\' parameter (default is false).')
 			.addFields(
-				{ name: 'Syntax:', value: '/random color' },
+				{ name: 'Syntax:', value: '/random color [alpha]' },
 			)
 		}
 		else if (command === 'random word') {
@@ -168,7 +168,7 @@ module.exports = {
 				{ name: 'regex-slicer', value: '/regex-slicer <input> <regex>' },
 				{ name: 'kill', value: '/kill [method]' },
 				{ name: 'ping', value: '/ping' },
-				{ name: 'random color', value: '/random color' },
+				{ name: 'random color', value: '/random color [alpha]' },
 				{ name: 'random word', value: '/random word [amount]' },
 				{ name: 'random letter', value: '/random letter [amount]' },
 				{ name: 'random integer', value: '/random integer <minimum> <maximum>' },
