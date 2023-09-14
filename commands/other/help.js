@@ -50,7 +50,7 @@ module.exports = {
 			var embed = new EmbedBuilder()
 			.setColor(0x000000)
 			.setTitle('/random color')
-			.setDescription('Replies with an image of a random color (and its hex). You may also specify if you want to incluse transparency in the \'alpha\' parameter (default is false).')
+			.setDescription('Replies with an image of a random color (and its hex). You may also specify if you want to include transparency in the \'alpha\' parameter (default is false).')
 			.addFields(
 				{ name: 'Syntax:', value: '/random color [alpha]' },
 			)
