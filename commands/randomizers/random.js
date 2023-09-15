@@ -45,7 +45,7 @@ module.exports = {
 				const a = Math.round(Math.random() * 255);
 				HexA = a.toString(16).toUpperCase();
 				if (a < 16) {HexA = '0' + HexA}
-				RGB = `rgba(${r}, ${g}, ${b}, ${a})`
+				RGB = `rgba(${r}, ${g}, ${b}, ${Math.round((a * 1000) / 255) / 1000})`
 				name = 'RGBA:';
 			}
 
