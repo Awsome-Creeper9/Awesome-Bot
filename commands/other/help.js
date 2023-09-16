@@ -161,9 +161,9 @@ module.exports = {
 			var embed = new EmbedBuilder()
 			.setColor(0x000000)
 			.setTitle('/gradient')
-			.setDescription('Create a gradient with 2-5 colors (in Hex, RGB, or RGBA format).')
+			.setDescription('Create a gradient with 2-10 colors (in Hex, RGB, or RGBA format). You\'ll be sent an error message if you typed something wrong.')
 			.addFields(
-				{ name: 'Syntax:', value: '/gradient <color1> <color2> [color3] [color4] [color5]' },
+				{ name: 'Syntax:', value: '/gradient <color1> <color2> [color3] [color4] [color5] [color6] [color7] [color8] [color9] [color10]' },
 			)
 		}
 		else {
@@ -187,7 +187,7 @@ module.exports = {
 				{ name: 'msg', value: '/msg <user> <message> [anonymous]' },
 				{ name: 'rps', value: '/rps <choice>' },
 				{ name: 'timer', value: '/timer <interval-type> <amount> [reason]' },
-				{ name: 'gradient', value: '/gradient <color1> <color2> [color3] [color4] [color5]' },
+				{ name: 'gradient', value: '/gradient <color1> <color2> [color3] [color4] [color5] [color6] [color7] [color8] [color9] [color10]' },
 			)
 		}
 		
