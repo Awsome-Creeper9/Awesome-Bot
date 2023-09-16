@@ -157,6 +157,15 @@ module.exports = {
 				{ name: 'Syntax:', value: '/timer <interval-type> <amount> [reason]' },
 			)
 		}
+		else if (command === 'gradient') {
+			var embed = new EmbedBuilder()
+			.setColor(0x000000)
+			.setTitle('/gradient')
+			.setDescription('Create a gradient with 2-5 colors (in Hex, RGB, or RGBA format).')
+			.addFields(
+				{ name: 'Syntax:', value: '/gradient <color1> <color2> [color3] [color4] [color5]' },
+			)
+		}
 		else {
 			var embed = new EmbedBuilder()
 			.setColor(0x000000)
@@ -178,6 +187,7 @@ module.exports = {
 				{ name: 'msg', value: '/msg <user> <message> [anonymous]' },
 				{ name: 'rps', value: '/rps <choice>' },
 				{ name: 'timer', value: '/timer <interval-type> <amount> [reason]' },
+				{ name: 'gradient', value: '/gradient <color1> <color2> [color3] [color4] [color5]' },
 			)
 		}
 		
