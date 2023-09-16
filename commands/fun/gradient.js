@@ -108,7 +108,9 @@ module.exports = {
 				.setColor(0x000000)
 				.setTitle(`Gradient`)
 				.addFields(
-					{ name: 'Colors:', value: `${colors[0]}, ${colors[1]}${colors[2] ? ', '+colors[2] : ''}${colors[3] ? ', '+colors[3] : ''}${colors[4] ? ', '+colors[4] : ''}` },
+					{ 
+						name: 'Colors:', 
+						value: `${colors[0]}, ${colors[1]}${((colors[2]) && (colors[2][0] === '#' || colors[2][0]+colors[2][1]+colors[2][2] === "rgb")) ? ', '+colors[2] : ''}${((colors[3]) && (colors[3][0] === '#' || colors[3][0]+colors[3][1]+colors[3][2] === "rgb")) ? ', '+colors[3] : ''}${((colors[4]) && (colors[4][0] === '#' || colors[4][0]+colors[4][1]+colors[4][2] === "rgb")) ? ', '+colors[4] : ''}` },
 				)
 				.setThumbnail(`attachment://image.png`);
 
