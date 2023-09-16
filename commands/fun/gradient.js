@@ -91,7 +91,7 @@ module.exports = {
 				else {
 					let gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
 					gradient.addColorStop(0, `${colors[0]}`);
-					gradient.addColorStop(1, `#${colors[1]}`);
+					gradient.addColorStop(1, `${colors[1]}`);
 					ctx.fillStyle = gradient;
 					ctx.fillRect(0, 0, canvas.width, canvas.height)
 				}
