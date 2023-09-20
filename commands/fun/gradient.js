@@ -7,7 +7,7 @@ module.exports = {
 		.setDescription('Create a gradient')
 		.addStringOption(option =>
 			option.setName('color1')
-				.setDescription('1st color (hex, rgb, or rgba)')
+				.setDescription('1st color')
 				.setRequired(true))
 		.addStringOption(option =>
 			option.setName('color2')
@@ -59,18 +59,21 @@ module.exports = {
 			interaction.options.getString('color10')
 		]
 
-		const canvas = Canvas.createCanvas(100, 100);
+		const canvas = Canvas.createCanvas(1000, 1000);
 		const ctx = canvas.getContext('2d');
 
 		function checkColor(color) {
-			if (!color) { return false}
-			if (color[0] === '#' || color[0]+color[1]+color[2] === "rgb") { return true }
-			else { return false }
+			if (!color) { return false }
+			else { return true }
 		}
 
 
 		if (type === 'radial') {
 			if (checkColor(colors[0]) && checkColor(colors[1])) {
+				ctx.beginPath();
+				ctx.arc(canvas.width / 2, canvas.height / 2, canvas.width / 2, 0, Math.PI * 2, true);
+				ctx.closePath();
+				ctx.clip();
 				if(checkColor(colors[2])) {
 					if(checkColor(colors[3])) {
 						if(checkColor(colors[4])) {
@@ -79,7 +82,7 @@ module.exports = {
 									if(checkColor(colors[7])) {
 										if(checkColor(colors[8])) {
 											if(checkColor(colors[9])) {
-												let gradient = ctx.createRadialGradient(canvas.width / 2, canvas.height / 2, canvas.height / 20, canvas.width / 2, canvas.height / 2, canvas.width / (Math.PI / 2));
+												let gradient = ctx.createRadialGradient(canvas.width / 2, canvas.height / 2, 0, canvas.width / 2, canvas.height / 2, canvas.width / 2);
 												gradient.addColorStop(0, `${colors[0]}`);
 												gradient.addColorStop(0.11, `${colors[1]}`);
 												gradient.addColorStop(0.22, `${colors[2]}`);
@@ -94,7 +97,7 @@ module.exports = {
 												ctx.fillRect(0, 0, canvas.width, canvas.height)	
 											}
 											else {
-												let gradient = ctx.createRadialGradient(canvas.width / 2, canvas.height / 2, canvas.height / 18, canvas.width / 2, canvas.height / 2, canvas.width / (Math.PI / 2));
+												let gradient = ctx.createRadialGradient(canvas.width / 2, canvas.height / 2, 0, canvas.width / 2, canvas.height / 2, canvas.width / 2);
 												gradient.addColorStop(0, `${colors[0]}`);
 												gradient.addColorStop(0.125, `${colors[1]}`);
 												gradient.addColorStop(0.25, `${colors[2]}`);
@@ -109,7 +112,7 @@ module.exports = {
 											}
 										}
 										else {
-											let gradient = ctx.createRadialGradient(canvas.width / 2, canvas.height / 2, canvas.height / 16, canvas.width / 2, canvas.height / 2, canvas.width / (Math.PI / 2));
+											let gradient = ctx.createRadialGradient(canvas.width / 2, canvas.height / 2, 0, canvas.width / 2, canvas.height / 2, canvas.width / 2);
 											gradient.addColorStop(0, `${colors[0]}`);
 											gradient.addColorStop(0.14, `${colors[1]}`);
 											gradient.addColorStop(0.29, `${colors[2]}`);
@@ -123,7 +126,7 @@ module.exports = {
 										}
 									}
 									else {
-										let gradient = ctx.createRadialGradient(canvas.width / 2, canvas.height / 2, canvas.height / 14, canvas.width / 2, canvas.height / 2, canvas.width / (Math.PI / 2));
+										let gradient = ctx.createRadialGradient(canvas.width / 2, canvas.height / 2, 0, canvas.width / 2, canvas.height / 2, canvas.width / 2);
 										gradient.addColorStop(0, `${colors[0]}`);
 										gradient.addColorStop(0.16, `${colors[1]}`);
 										gradient.addColorStop(0.33, `${colors[2]}`);
@@ -136,7 +139,7 @@ module.exports = {
 									}
 								}
 								else {
-									let gradient = ctx.createRadialGradient(canvas.width / 2, canvas.height / 2, canvas.height / 12, canvas.width / 2, canvas.height / 2, canvas.width / (Math.PI / 2));
+									let gradient = ctx.createRadialGradient(canvas.width / 2, canvas.height / 2, 0, canvas.width / 2, canvas.height / 2, canvas.width / 2);
 									gradient.addColorStop(0, `${colors[0]}`);
 									gradient.addColorStop(0.2, `${colors[1]}`);
 									gradient.addColorStop(0.4, `${colors[2]}`);
@@ -148,7 +151,7 @@ module.exports = {
 								}
 							}
 							else {
-								let gradient = ctx.createRadialGradient(canvas.width / 2, canvas.height / 2, canvas.height / 10, canvas.width / 2, canvas.height / 2, canvas.width / (Math.PI / 2));
+								let gradient = ctx.createRadialGradient(canvas.width / 2, canvas.height / 2, 0, canvas.width / 2, canvas.height / 2, canvas.width / 2);
 								gradient.addColorStop(0, `${colors[0]}`);
 								gradient.addColorStop(0.25, `${colors[1]}`);
 								gradient.addColorStop(0.5, `${colors[2]}`);
@@ -159,7 +162,7 @@ module.exports = {
 							}
 						}
 						else {
-							let gradient = ctx.createRadialGradient(canvas.width / 2, canvas.height / 2, canvas.height / 8, canvas.width / 2, canvas.height / 2, canvas.width / (Math.PI / 2));
+							let gradient = ctx.createRadialGradient(canvas.width / 2, canvas.height / 2, 0, canvas.width / 2, canvas.height / 2, canvas.width / 2);
 							gradient.addColorStop(0, `${colors[0]}`);
 							gradient.addColorStop(0.33, `${colors[1]}`);
 							gradient.addColorStop(0.66, `${colors[2]}`);
@@ -169,7 +172,7 @@ module.exports = {
 						}
 					}
 					else {
-						let gradient = ctx.createRadialGradient(canvas.width / 2, canvas.height / 2, canvas.height / 6, canvas.width / 2, canvas.height / 2, canvas.width / (Math.PI / 2));
+						let gradient = ctx.createRadialGradient(canvas.width / 2, canvas.height / 2, 0, canvas.width / 2, canvas.height / 2, canvas.width / 2);
 						gradient.addColorStop(0, `${colors[0]}`);
 						gradient.addColorStop(0.5, `${colors[1]}`);
 						gradient.addColorStop(1, `${colors[2]}`);
@@ -178,12 +181,13 @@ module.exports = {
 					}
 				}
 				else {
-					let gradient = ctx.createRadialGradient(canvas.width / 2, canvas.height / 2, canvas.height / 4, canvas.width / 2, canvas.height / 2, canvas.width / (Math.PI / 2));
+					let gradient = ctx.createRadialGradient(canvas.width / 2, canvas.height / 2, 0, canvas.width / 2, canvas.height / 2, canvas.width / 2);
 					gradient.addColorStop(0, `${colors[0]}`);
 					gradient.addColorStop(1, `${colors[1]}`);
 					ctx.fillStyle = gradient;
 					ctx.fillRect(0, 0, canvas.width, canvas.height)
 				}
+
 				const attachment = new AttachmentBuilder(await canvas.toBuffer('image/png'), { name: `image.png` })
 				const embed = new EmbedBuilder()
 				.setColor(0x000000)
