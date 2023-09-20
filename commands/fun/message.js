@@ -23,7 +23,7 @@ module.exports = {
 
 		let canSend = true;
 		const blackList = [
-			'564469575240908817'
+			''
 		]
 
 		for (let i = 0; i < blackList.length; i++) {
