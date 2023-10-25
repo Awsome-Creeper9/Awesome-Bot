@@ -14,7 +14,7 @@ module.exports = {
 	async execute(interaction) {
 		const user = interaction.options.getUser('user');
 		let method = interaction.options.getString('method');
-		const methodList = ['generic', 'player generic', 'melee', 'ranged', 'cactus', 'cactus escape', 'fall', 'hit ground too hard', 'hit ground too hard escape', 'fell off ladder', 'fell off vines', 'fell off weeping vines', 'fell off twisting vines', 'fell off scaffolding', 'fell while climbing', 'fell out of water', 'doomed fall', 'void', 'void escape', 'magic', 'magic escape', 'player magic', 'explosion', 'player explosion', 'starvation', 'starve whilst fighting', 'lightning', 'lightning whilst fighting', 'wither', 'wither whilst fighting', 'firework', 'berry bush', 'berry bush escape', 'lava', 'lava escape', 'magma', 'magma escape', 'drowning', 'drowning escape', 'freezing', 'freezing escape', 'fire', 'burning', 'burned whilst fighting', 'fire whilst fighting', 'kinetic energy', 'kinetic energy escape', 'anvil', 'falling block', 'suffocation', 'suffocated whilst fighting', 'trident', 'stalagmite', 'stalagmite whilst fighting', 'stalactite', 'bed', 'cramming', 'cramming escape', 'thorns', 'blaze', 'bee', 'warden', 'wither skull', 'world border', 'world border whilst fighting', 'dehydration', 'dehydration escape', 'command', 'command whilst fighting', 'snowball']
+		const methodList = ['generic', 'player generic', 'melee', 'ranged', 'cactus', 'cactus escape', 'fall', 'hit ground too hard', 'hit ground too hard escape', 'fell off ladder', 'fell off vines', 'fell off weeping vines', 'fell off twisting vines', 'fell off scaffolding', 'fell while climbing', 'fell out of water', 'doomed fall', 'void', 'void escape', 'magic', 'magic escape', 'player magic', 'explosion', 'player explosion', 'starvation', 'starve while fighting', 'lightning', 'lightning while fighting', 'wither', 'wither while fighting', 'firework', 'berry bush', 'berry bush escape', 'lava', 'lava escape', 'magma', 'magma escape', 'drowning', 'drowning escape', 'freezing', 'freezing escape', 'fire', 'burning', 'burned while fighting', 'fire while fighting', 'kinetic energy', 'kinetic energy escape', 'anvil', 'falling block', 'suffocation', 'suffocated while fighting', 'trident', 'stalagmite', 'stalagmite while fighting', 'stalactite', 'bed', 'cramming', 'cramming escape', 'thorns', 'blaze', 'bee', 'warden', 'wither skull', 'world border', 'world border while fighting', 'dehydration', 'dehydration escape', 'command', 'command while fighting', 'snowball']
 		if (method === 'random') {
 			method = methodList[Math.round(Math.random() * (methodList.length - 1))]
 		}
@@ -23,10 +23,10 @@ module.exports = {
 		else if (method === 'melee') {message = `${user} was slain by ${interaction.user}`}
 		else if (method === 'ranged') {message = `${user} was shot by ${interaction.user}`}
 		else if (method === 'cactus') {message = `${user} was pricked to death`}
-		else if (method === 'cactus escape') {message = `${user} walked into a cactus whilst trying to escape ${interaction.user}`}
+		else if (method === 'cactus escape') {message = `${user} walked into a cactus while trying to escape ${interaction.user}`}
 		else if (method === 'fall') {message = `${user} fell from a high place`}
 		else if (method === 'hit ground too hard') {message = `${user} hit the ground too hard`}
-		else if (method === 'hit ground too hard escape') {message = `${user} hit the ground too hard whilst trying to escape ${interaction.user}`}
+		else if (method === 'hit ground too hard escape') {message = `${user} hit the ground too hard while trying to escape ${interaction.user}`}
 		else if (method === 'fell off ladder') {message = `${user} fell off a ladder`}
 		else if (method === 'fell off vines') {message = `${user} fell off some vines`}
 		else if (method === 'fell off weeping vines') {message = `${user} fell off some weeping vines`}
@@ -37,41 +37,41 @@ module.exports = {
 		else if (method === 'doomed fall') {message = `${user} was doomed to fall by ${interaction.user}`}
 		else if (method === 'void escape') {message = `${user} didn't want to live in the same world as ${interaction.user}`}
 		else if (method === 'magic') {message = `${user} was killed by magic`}
-		else if (method === 'magic escape') {message = `${user} was killed by magic whilst trying to escape ${interaction.user}`}
+		else if (method === 'magic escape') {message = `${user} was killed by magic while trying to escape ${interaction.user}`}
 		else if (method === 'player magic') {message = `${user} was killed by ${interaction.user} using magic`}
 		else if (method === 'explosion') {message = `${user} blew up`}
 		else if (method === 'player explosion') {message = `${user} was blown up by ${interaction.user}`}
 		else if (method === 'starvation') {message = `${user} starved to death`}
-		else if (method === 'starve whilst fighting') {message = `${user} starved to death whilst fighting ${interaction.user}`}
+		else if (method === 'starve while fighting') {message = `${user} starved to death while fighting ${interaction.user}`}
 		else if (method === 'lightning') {message = `${user} was struck by lightning`}
-		else if (method === 'lightning whilst fighting') {message = `${user} was struck by lightning whilst fighting ${interaction.user}`}
+		else if (method === 'lightning while fighting') {message = `${user} was struck by lightning while fighting ${interaction.user}`}
 		else if (method === 'wither') {message = `${user} withered away`}
-		else if (method === 'wither whilst fighting') {message = `${user} withered away whilst fighting ${interaction.user}`}
+		else if (method === 'wither while fighting') {message = `${user} withered away while fighting ${interaction.user}`}
 		else if (method === 'firework') {message = `${user} went off with a bang`}
 		else if (method === 'berry bush') {message = `${user} was poked to death by a sweet berry bush`}
-		else if (method === 'berry bush escape') {message = `${user} was poked to death by a sweet berry bush whilst trying to escape ${interaction.user}`}
+		else if (method === 'berry bush escape') {message = `${user} was poked to death by a sweet berry bush while trying to escape ${interaction.user}`}
 		else if (method === 'lava') {message = `${user} tried to swim in lava`}
 		else if (method === 'lava escape') {message = `${user} tried to swim in lava to escape ${interaction.user}`}
 		else if (method === 'drowning') {message = `${user} drowned`}
-		else if (method === 'drowning escape') {message = `${user} drowned whilst trying to escape ${interaction.user}`}
+		else if (method === 'drowning escape') {message = `${user} drowned while trying to escape ${interaction.user}`}
 		else if (method === 'magma') {message = `${user} discovered the floor was lava`}
 		else if (method === 'magma escape') {message = `${user} walked into the dangerzon due to ${interaction.user}`}
 		else if (method === 'freezing') {message = `${user} froze to death`}
 		else if (method === 'freezing escape') {message = `${user} was frozen to death by ${interaction.user}`}
 		else if (method === 'fire') {message = `${user} went up in flames`}
 		else if (method === 'burning') {message = `${user} burned to death`}
-		else if (method === 'burned whilst fighting') {message = `${user} was burnt to a crisp whilst fighting ${interaction.user}`}
-		else if (method === 'fire whilst fighting') {message = `${user} walked into fire whilst fighting ${interaction.user}`}
+		else if (method === 'burned while fighting') {message = `${user} was burned to a crisp while fighting ${interaction.user}`}
+		else if (method === 'fire while fighting') {message = `${user} walked into fire while fighting ${interaction.user}`}
 		else if (method === 'kinetic energy') {message = `${user} experienced kinetic energy`}
-		else if (method === 'kinetic energy escape') {message = `${user} experienced kinetic energy whilst trying to escape ${interaction.user}`}
+		else if (method === 'kinetic energy escape') {message = `${user} experienced kinetic energy while trying to escape ${interaction.user}`}
 		else if (method === 'anvil') {message = `${user} was squashed by a falling anvil`}
 		else if (method === 'falling block') {message = `${user} was squashed by a falling block`}
 		else if (method === 'trident') {message = `${user} was impaled by ${interaction.user}`}
 		else if (method === 'stalagmite') {message = `${user} was impaled on a stalagmite`}
-		else if (method === 'stalagmite whilst fighting') {message = `${user} was impaled on a stalagmite whilst fighting ${interaction.user}`}
+		else if (method === 'stalagmite while fighting') {message = `${user} was impaled on a stalagmite while fighting ${interaction.user}`}
 		else if (method === 'stalactite') {message = `${user} was skewered by a falling stalactite`}
 		else if (method === 'suffocation') {message = `${user} suffocated in a wall`}
-		else if (method === 'suffocated whilst fighting') {message = `${user} suffocated in a wall whilst fighting ${interaction.user}`}
+		else if (method === 'suffocated while fighting') {message = `${user} suffocated in a wall while fighting ${interaction.user}`}
 		else if (method === 'bed') {message = `${user} was killed by [Intentional Game Design]`}
 		else if (method === 'cramming') {message = `${user} was squished too much`}
 		else if (method === 'cramming escape') {message = `${user} was squashed by ${interaction.user}`}
@@ -81,12 +81,12 @@ module.exports = {
 		else if (method === 'warden') {message = `${user} was obliterated by a sonically-charged shriek`}
 		else if (method === 'wither skull') {message = `${user} was shot by a skull from Wither`}
 		else if (method === 'world border') {message = `${user} left the confines of this world`}
-		else if (method === 'world border whilst fighting') {message = `${user} left the confines of this world whilst fighting ${interaction.user}`}
+		else if (method === 'world border while fighting') {message = `${user} left the confines of this world while fighting ${interaction.user}`}
 		else if (method === 'dehydration') {message = `${user} died from dehydration`}
-		else if (method === 'dehydration escape') {message = `${user} died from dehydration whilst trying to escape ${interaction.user}`}
+		else if (method === 'dehydration escape') {message = `${user} died from dehydration while trying to escape ${interaction.user}`}
 		else if (method === 'player generic') {message = `${user} died because of ${interaction.user}`}
 		else if (method === 'command') {message = `${user} was killed`}
-		else if (method === 'command whilst fighting') {message = `${user} was killed whilst fighting ${interaction.user}`}
+		else if (method === 'command while fighting') {message = `${user} was killed while fighting ${interaction.user}`}
 		else if (method === 'snowball') {message = `${user} was pummeled by ${interaction.user}`}
 		else {message = `${user} died`}
 		await interaction.reply(`${message}`);
