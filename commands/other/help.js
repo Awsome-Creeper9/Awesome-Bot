@@ -104,10 +104,10 @@ module.exports = {
 			var embed = new EmbedBuilder()
 			.setColor(0x000000)
 			.setTitle('/kill')
-			.setDescription('Kills a selected user from the \'user\' parameter using the method from the \'method\' parameter (default is generic).')
+			.setDescription('Kills a selected user from the \'user\' parameter using the method from the \'method\' parameter (default is generic) with the item from the \'item-name\' parameter (if applicable; some methods require it).')
 			.addFields(
-				{ name: 'Syntax:', value: '/kill <user> [method]' },
-				{ name: 'Valid Method Values:', value: 'random, generic, player generic, melee, ranged, cactus, cactus escape, fall, hit ground too hard, hit ground too hard escape, fell off ladder, fell off vines, fell off weeping vines, fell off twisting vines, fell off scaffolding, fell while climbing, fell out of water, doomed fall, void, void escape, magic, magic escape, player magic, explosion, player explosion, starvation, starve while fighting, lightning, lightning while fighting, wither, wither while fighting, firework, berry bush, berry bush escape, lava, lava escape, magma, magma escape, drowning, drowning escape, freezing, freezing escape, fire, burning, burned while fighting, fire while fighting, kinetic energy, kinetic energy escape, anvil, falling block, suffocation, suffocated while fighting, trident, stalagmite, stalagmite while fighting, stalactite, bed, cramming, cramming escape, thorns, blaze, bee, warden, wither skull, world border, world border while fighting, dehydration, dehydration escape, command, command while fighting, snowball' },
+				{ name: 'Syntax:', value: '/kill <user> [method] [item-name]' },
+				{ name: 'Valid Method Values:', value: 'random, generic, player generic, melee, ranged, cactus, cactus escape, fall, hit ground too hard, hit ground too hard escape, fell off ladder, fell off vines, fell off weeping vines, fell off twisting vines, fell off scaffolding, fell while climbing, fell out of water, doomed fall, void, void escape, magic, magic escape, player magic, explosion, player explosion, starvation, starve while fighting, lightning, lightning while fighting, wither, wither while fighting, firework, berry bush, berry bush escape, lava, lava escape, magma, magma escape, drowning, drowning escape, freezing, freezing escape, fire, burning, burned while fighting, fire while fighting, kinetic energy, kinetic energy escape, anvil, falling block, suffocation, suffocated while fighting, trident, stalagmite, stalagmite while fighting, stalactite, bed, cramming, cramming escape, thorns, blaze, bee, warden, wither skull, world border, world border while fighting, dehydration, dehydration escape, command, command while fighting, snowball, crossbow firework, warden escape, even more magic' },
 			)
 		}
 		else if (command === 'help') {
@@ -176,7 +176,7 @@ module.exports = {
 				{ name: 'convert-base', value: '/convert-base <input> <base> <to-base>' },
 				{ name: 'change-case', value: '/change-case <text> <case>' },
 				{ name: 'regex-slicer', value: '/regex-slicer <input> <regex>' },
-				{ name: 'kill', value: '/kill [method]' },
+				{ name: 'kill', value: '/kill [method] [item-name]' },
 				{ name: 'ping', value: '/ping' },
 				{ name: 'random color', value: '/random color [alpha]' },
 				{ name: 'random word', value: '/random word [amount]' },
