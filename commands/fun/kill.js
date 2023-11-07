@@ -24,8 +24,8 @@ module.exports = {
 		}
 		let message;
 		if (method === 'void') {message = `${user} fell out of the world`}
-		else if (method === 'melee') {message = `${user} was slain by ${interaction.user} ${item ? `using ${item}` : ''}`}
-		else if (method === 'ranged') {message = `${user} was shot by ${interaction.user} ${item ? `using ${item}` : ''}`}
+		else if (method === 'melee') {message = `${user} was slain by ${interaction.user} ${item ? `using [*${item}*]` : ''}`}
+		else if (method === 'ranged') {message = `${user} was shot by ${interaction.user} ${item ? `using [*${item}*]` : ''}`}
 		else if (method === 'cactus') {message = `${user} was pricked to death`}
 		else if (method === 'cactus escape') {message = `${user} walked into a cactus while trying to escape ${interaction.user}`}
 		else if (method === 'fall') {message = `${user} fell from a high place`}
@@ -38,13 +38,13 @@ module.exports = {
 		else if (method === 'fell off scaffolding') {message = `${user} fell off scaffolding`}
 		else if (method === 'fell out of water') {message = `death.fell.accident.water`}
 		else if (method === 'fell while climbing') {message = `${user} fell while climbing`}
-		else if (method === 'doomed fall') {message = `${user} was doomed to fall by ${interaction.user} ${item ? `using ${item}` : ''}`}
+		else if (method === 'doomed fall') {message = `${user} was doomed to fall by ${interaction.user} ${item ? `using [*${item}*]` : ''}`}
 		else if (method === 'void escape') {message = `${user} didn't want to live in the same world as ${interaction.user}`}
 		else if (method === 'magic') {message = `${user} was killed by magic`}
 		else if (method === 'magic escape') {message = `${user} was killed by magic while trying to escape ${interaction.user}`}
-		else if (method === 'player magic') {message = `${user} was killed by ${interaction.user} using ${item ? `${item}` : 'magic'}`}
+		else if (method === 'player magic') {message = `${user} was killed by ${interaction.user} using ${item ? `[*${item}*]` : 'magic'}`}
 		else if (method === 'explosion') {message = `${user} blew up`}
-		else if (method === 'player explosion') {message = `${user} was blown up by ${interaction.user} ${item ? `using ${item}` : ''}`}
+		else if (method === 'player explosion') {message = `${user} was blown up by ${interaction.user} ${item ? `using [*${item}*]` : ''}`}
 		else if (method === 'starvation') {message = `${user} starved to death`}
 		else if (method === 'starve while fighting') {message = `${user} starved to death while fighting ${interaction.user}`}
 		else if (method === 'lightning') {message = `${user} was struck by lightning`}
@@ -70,7 +70,7 @@ module.exports = {
 		else if (method === 'kinetic energy escape') {message = `${user} experienced kinetic energy while trying to escape ${interaction.user}`}
 		else if (method === 'anvil') {message = `${user} was squashed by a falling anvil`}
 		else if (method === 'falling block') {message = `${user} was squashed by a falling block`}
-		else if (method === 'trident') {message = `${user} was impaled by ${interaction.user} ${item ? `with ${item}` : ''}`}
+		else if (method === 'trident') {message = `${user} was impaled by ${interaction.user} ${item ? `with [*${item}*]` : ''}`}
 		else if (method === 'stalagmite') {message = `${user} was impaled on a stalagmite`}
 		else if (method === 'stalagmite while fighting') {message = `${user} was impaled on a stalagmite while fighting ${interaction.user}`}
 		else if (method === 'stalactite') {message = `${user} was skewered by a falling stalactite`}
@@ -92,8 +92,8 @@ module.exports = {
 		else if (method === 'command') {message = `${user} was killed`}
 		else if (method === 'command while fighting') {message = `${user} was killed while fighting ${interaction.user}`}
 		else if (method === 'snowball') {message = `${user} was pummeled by ${interaction.user}`}
-		else if (method === "crossbow firework" && item) {message = `${user} went off with a bang due to a firework fired from ${item} by ${interaction.user}`}
-		else if (method === "warden escape" && item) {message = `${user} was obliterated by a sonically-charged shriek while trying to escape ${interaction.user} wielding ${item}`}
+		else if (method === "crossbow firework" && item) {message = `${user} went off with a bang due to a firework fired from [*${item}*] by ${interaction.user}`}
+		else if (method === "warden escape" && item) {message = `${user} was obliterated by a sonically-charged shriek while trying to escape ${interaction.user} wielding [*${item}*]`}
 		else if (method === "even more magic") {message = `${user} was killed by even more magic`}
 		else {message = `${user} died`}
 		await interaction.reply(`${message}`);
