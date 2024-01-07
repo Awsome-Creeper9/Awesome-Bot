@@ -124,9 +124,9 @@ module.exports = {
 			var embed = new EmbedBuilder()
 			.setColor(0x000000)
 			.setTitle('/status')
-			.setDescription('Sets the bot\'s status message to what was given in the \'status\' parameter (Only Awsome_Creeper9 has access to run the command).')
+			.setDescription('Sets the bot\'s status and activity (Only Awsome_Creeper9 has the ability to run this command).')
 			.addFields(
-				{ name: 'Syntax:', value: '/status <status>' },
+				{ name: 'Syntax:', value: '/status <status> <type> <activity>' },
 			)
 		}
 		else if (command === 'msg') {
@@ -185,7 +185,7 @@ module.exports = {
 				{ name: 'random integer', value: '/random integer <minimum> <maximum>' },
 				{ name: 'echo', value: '/echo <message>' },
 				{ name: 'suggest', value: '/suggest <suggestion>' },
-				{ name: 'status', value: '/status <status>' },
+				{ name: 'status', value: '/status <status> <type> <activity>' },
 				{ name: 'msg', value: '/msg <user> <message> [anonymous]' },
 				{ name: 'rps', value: '/rps <choice>' },
 				{ name: 'timer', value: '/timer <interval-type> <amount> [reason]' },

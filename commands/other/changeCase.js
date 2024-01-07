@@ -13,8 +13,8 @@ module.exports = {
 				.setDescription('Uppercase or lowercase')
 				.setRequired(true)
 				.addChoices(
-					{ name: 'uppercase', value: 'uppercase' },
-					{ name: 'lowercase', value: 'lowercase' },
+					{ name: 'Uppercase', value: 'uppercase' },
+					{ name: 'Lowercase', value: 'lowercase' },
 				)),
 	async execute(interaction) {
 		const text = interaction.options.getString('text');

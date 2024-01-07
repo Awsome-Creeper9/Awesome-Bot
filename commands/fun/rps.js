@@ -9,9 +9,9 @@ module.exports = {
 				.setDescription('Your choice')
 				.setRequired(true)
 				.addChoices(
-					{ name: 'rock', value: 'rock' },
-					{ name: 'paper', value: 'paper' },
-					{ name: 'scissors', value: 'scissors' },
+					{ name: 'Rock', value: 'rock' },
+					{ name: 'Paper', value: 'paper' },
+					{ name: 'Scissors', value: 'scissors' },
 				)),
 	async execute(interaction) {
 		const choice = interaction.options.getString('choice');

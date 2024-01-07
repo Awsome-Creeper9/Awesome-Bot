@@ -9,11 +9,11 @@ module.exports = {
 				.setDescription('Type of interval')
 				.setRequired(true)
 				.addChoices(
-					{ name: 'second', value: 'second' },
-					{ name: 'minute', value: 'minute' },
-					{ name: 'hour', value: 'hour' },
-					{ name: 'day', value: 'day' },
-					{ name: 'week', value: 'week' },
+					{ name: 'Second', value: 'second' },
+					{ name: 'Minute', value: 'minute' },
+					{ name: 'Hour', value: 'hour' },
+					{ name: 'Day', value: 'day' },
+					{ name: 'Week', value: 'week' },
 				))
 		.addNumberOption(option =>
 			option.setName('amount')
