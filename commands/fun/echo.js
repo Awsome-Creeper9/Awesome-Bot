@@ -10,6 +10,11 @@ module.exports = {
 				.setRequired(true)),
 	async execute(interaction) {
 		const message = interaction.options.getString('message');
-		await interaction.reply(`${message}`);
+		const currentChannel = interaction.channel;
+
+		await interaction.reply({ content: 'Message sent', ephemeral: true});
+
+		if (currentChannel) {await currentChannel.send(`${message}`);}
+		else {await interaction.client.users.send(interaction.user.id, `${message}`);}
 	},
 };
