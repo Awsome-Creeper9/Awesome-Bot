@@ -27,9 +27,9 @@ module.exports = {
 			else if (choice === 'scissors') {await interaction.reply(`You chose \`scissors\` and I chose \`paper\`; You won.`);}
 		}
 		else if (botChoice === 2 || botChoice === 3) {
-			if (choice === 'rock') {await interaction.reply(`You chose \`rock\` and I chose \`scissors\`; You win.`);}
-			else if (choice === 'paper') {await interaction.reply(`You chose \`paper\` and I chose \`scissors\`; I win.`);}
-			else if (choice === 'scissors') {await interaction.reply(`You chose \`scissors\` and I chose \`scissors\`; We tie.`);}
+			if (choice === 'rock') {await interaction.reply(`You chose \`rock\` and I chose \`scissors\`; You won.`);}
+			else if (choice === 'paper') {await interaction.reply(`You chose \`paper\` and I chose \`scissors\`; I won.`);}
+			else if (choice === 'scissors') {await interaction.reply(`You chose \`scissors\` and I chose \`scissors\`; We tied.`);}
 		}
 		else {await interaction.reply(`Your options are: \'rock\', \'paper\', or \'scissors\'`);}
 	},
