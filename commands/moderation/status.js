@@ -27,6 +27,8 @@ module.exports = {
 				{ name: 'Watching', value: 'watching' },
 				{ name: 'Listening', value: 'listening' },
 				{ name: 'Competing', value: 'competing' },
+				{ name: 'Streaming', value: 'streaming' },
+				{ name: 'None', value: 'none' },
 			)),
 	async execute(interaction, client) {
 		const status = interaction.options.getString('status')
@@ -46,6 +48,12 @@ module.exports = {
 			}
 			else if (activity === 'competing') {
 				interaction.client.user.setActivity(status, { type: ActivityType.Competing });
+			}
+			else if (activity === 'streaming') {
+				interaction.client.user.setActivity(status, { type: ActivityType.Streaming, url: 'https://twitch.tv/awsome_creeper9' });
+			}
+			else if (activity === 'none') {
+				interaction.client.user.setActivity(status, { type: ActivityType.Custom, name: "", state: "" });
 			}
 			else {
 				interaction.client.user.setActivity(status);
