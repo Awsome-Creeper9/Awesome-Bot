@@ -21,7 +21,7 @@ module.exports = {
 	.addStringOption(option =>
 		option.setName('activity')
 			.setDescription('Activity type')
-			.setRequired(true)
+			.setRequired(false)
 			.addChoices(
 				{ name: 'Playing', value: 'playing' },
 				{ name: 'Watching', value: 'watching' },
@@ -38,26 +38,14 @@ module.exports = {
 		if (interaction.user.id != '564469575240908817') return await interaction.reply({ content: 'Only Awsome_Creeper9 can use this command', ephemeral: true})
 		else {
 
-			interaction.client.user.setStatus(type)
+			interaction.client.user.setStatus(type);
 
-			if (activity === 'watching') {
-				interaction.client.user.setActivity(status, { type: ActivityType.Watching });
-			}
-			else if (activity === 'listening') {
-				interaction.client.user.setActivity(status, { type: ActivityType.Listening });
-			}
-			else if (activity === 'competing') {
-				interaction.client.user.setActivity(status, { type: ActivityType.Competing });
-			}
-			else if (activity === 'streaming') {
-				interaction.client.user.setActivity(status, { type: ActivityType.Streaming, url: 'https://twitch.tv/awsome_creeper9' });
-			}
-			else if (activity === 'none') {
-				interaction.client.user.setActivity(status, { type: ActivityType.Custom, name: "", state: "" });
-			}
-			else {
-				interaction.client.user.setActivity(status);
-			}
+			if (activity === 'watching') {interaction.client.user.setActivity(status, { type: ActivityType.Watching });}
+			else if (activity === 'listening') {interaction.client.user.setActivity(status, { type: ActivityType.Listening });}
+			else if (activity === 'competing') {interaction.client.user.setActivity(status, { type: ActivityType.Competing });}
+			else if (activity === 'streaming') {interaction.client.user.setActivity(status, { type: ActivityType.Streaming, url: 'https://twitch.tv/awsome_creeper9' });}
+			else if (activity === 'none') {interaction.client.user.setActivity(status, { type: ActivityType.Custom, name: "", state: "" });}
+			else {interaction.client.user.setActivity(status);}
 
 			await interaction.reply({ content: 'Status has been set', ephemeral: true});
 		}

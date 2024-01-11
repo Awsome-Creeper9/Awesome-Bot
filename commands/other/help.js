@@ -126,7 +126,9 @@ module.exports = {
 			.setTitle('/status')
 			.setDescription('Sets the bot\'s status and activity (Only Awsome_Creeper9 has the ability to run this command).')
 			.addFields(
-				{ name: 'Syntax:', value: '/status <status> <type> <activity>' },
+				{ name: 'Syntax:', value: '/status <status> <type> [activity]' },
+				{ name: 'Valid Type Values:', value: 'Online, Idle, Do Not Disturb, Invisible' },
+				{ name: 'Valid Activity Values:', value: 'Playing, Watching, Listening, Competing, Streaming, None' },
 			)
 		}
 		else if (command === 'msg') {
@@ -145,7 +147,7 @@ module.exports = {
 			.setDescription('Allows you to play Rock, Paper, Scissors against the bot.')
 			.addFields(
 				{ name: 'Syntax:', value: '/rps <choice>' },
-				{ name: 'Valid Choice Values:', value: 'rock, paper, scissors' },
+				{ name: 'Valid Choice Values:', value: 'Rock, Paper, Scissors' },
 			)
 		}
 		else if (command === 'timer') {
@@ -155,7 +157,7 @@ module.exports = {
 			.setDescription('Set a timer for \'amount\' \'interval-types\', you can also feed it a reason so that you can remember what the timer was for.')
 			.addFields(
 				{ name: 'Syntax:', value: '/timer <interval-type> <amount> [reason]' },
-				{ name: 'Valid Interval-Type Values:', value: 'second, minute, hour, day, week' },
+				{ name: 'Valid Interval-Type Values:', value: 'Second, Minute, Hour, Day, Week' },
 			)
 		}
 		else if (command === 'gradient') {
@@ -165,7 +167,7 @@ module.exports = {
 			.setDescription('Create a gradient with 2-10 colors. You\'ll be sent an error message if you typed something wrong. You may specify what tyoe of gradient you want in the \'type\' parameter (default is linear).')
 			.addFields(
 				{ name: 'Syntax:', value: '/gradient <color1> <color2> [color3] [color4] [color5] [color6] [color7] [color8] [color9] [color10] [type]' },
-				{ name: 'Valid Type Values:', value: 'linear, 45 degrees, radial' },
+				{ name: 'Valid Type Values:', value: 'Linear, 45 Degrees, Radial' },
 			)
 		}
 		else {

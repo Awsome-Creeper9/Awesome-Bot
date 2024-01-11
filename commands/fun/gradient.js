@@ -41,9 +41,9 @@ module.exports = {
 			option.setName('type')
 				.setDescription('Type of gradient')
 				.addChoices(
-					{ name: 'linear', value: 'linear' },
-					{ name: '45 degrees', value: '45 degrees' },
-					{ name: 'radial', value: 'radial' },)),
+					{ name: 'Linear', value: 'linear' },
+					{ name: '45 Degrees', value: '45 degrees' },
+					{ name: 'Radial', value: 'radial' },)),
 	async execute(interaction) {
 		const type = interaction.options.getString('type')
 		const colors = [
