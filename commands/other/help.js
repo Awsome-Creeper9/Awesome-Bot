@@ -187,7 +187,7 @@ module.exports = {
 				{ name: 'random integer', value: '/random integer <minimum> <maximum>' },
 				{ name: 'echo', value: '/echo <message>' },
 				{ name: 'suggest', value: '/suggest <suggestion>' },
-				{ name: 'status', value: '/status <status> <type> <activity>' },
+				{ name: 'status', value: '/status <status> <type> [activity]' },
 				{ name: 'msg', value: '/msg <user> <message> [anonymous]' },
 				{ name: 'rps', value: '/rps <choice>' },
 				{ name: 'timer', value: '/timer <interval-type> <amount> [reason]' },
