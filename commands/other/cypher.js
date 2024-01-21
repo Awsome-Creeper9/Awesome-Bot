@@ -41,7 +41,11 @@ module.exports = {
 					}
 				}
 			}
-			if (isLetter == string.length) {
+
+			if (amount < 0) {
+				await interaction.reply(`You may only shift by a positive integer.`);
+			}
+			else if (isLetter == string.length) {
 				await interaction.reply(`${newString}`);
 			}
 			else {
