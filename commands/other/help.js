@@ -170,6 +170,16 @@ module.exports = {
 				{ name: 'Valid Type Values:', value: 'Linear, 45 Degrees, Radial' },
 			)
 		}
+		else if (command === 'caesar-cypher') {
+			var embed = new EmbedBuilder()
+				.setColor(0x000000)
+				.setTitle('/caesar-cypher')
+				.setDescription('Caesar cypher a string given in the \`string\` parameter by the \`shift\` parameter.')
+				.addFields(
+					{name: 'Syntax:', value: '/gradient <string> <shift>'},
+					{name: 'Note:', value: 'You can only use english letters and spaces in the string used.'},
+				)
+		}
 		else {
 			var embed = new EmbedBuilder()
 			.setColor(0x000000)
@@ -192,6 +202,7 @@ module.exports = {
 				{ name: 'rps', value: '/rps <choice>' },
 				{ name: 'timer', value: '/timer <interval-type> <amount> [reason]' },
 				{ name: 'gradient', value: '/gradient <color1> <color2> [color3] [color4] [color5] [color6] [color7] [color8] [color9] [color10] [type]' },
+				{ name: 'caesar-cypher', value: '/caesar-cypher <text> <shift>' },
 			)
 		}
 		
