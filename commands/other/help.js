@@ -106,11 +106,10 @@ module.exports = {
 			var embed = new EmbedBuilder()
 			.setColor(0x000000)
 			.setTitle('/suggest')
-			.setDescription('/suggest <suggestion>')
+			.setDescription('/suggest')
 			.addFields(
 				{ name: 'Description:', value: 'Allows you to send a suggestion directly to the bot\'s developer.' },
-				
-				{ name: '<suggestion>:', value: '**Required**. The ``suggestion`` value is what will be sent to the bot\'s developer.' },
+
 				{ name: '*Additional Info*:', value: 'Your user will be attached to the suggestion. The developer is able to blacklist you from sending suggestions.' },
 			)
 		}
@@ -245,7 +244,7 @@ module.exports = {
 				{ name: 'random letter', value: '/random letter [amount]' },
 				{ name: 'random integer', value: '/random integer <minimum> <maximum>' },
 				{ name: 'echo', value: '/echo <message>' },
-				{ name: 'suggest', value: '/suggest <suggestion>' },
+				{ name: 'suggest', value: '/suggest' },
 				{ name: 'status', value: '/status <status> <type> [activity]' },
 				{ name: 'msg', value: '/msg <user> <message> [anonymous]' },
 				{ name: 'rps', value: '/rps <choice>' },
