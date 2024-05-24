@@ -14,176 +14,225 @@ module.exports = {
 			var embed = new EmbedBuilder()
 			.setColor(0x000000)
 			.setTitle('/convert-base')
-			.setDescription('Converts the value given in the \'input\' parameter from the base given in the \'base\' parameter to the base given in the \'to-base\' parameter (works with bases 2-36).')
+			.setDescription('/convert-base <input> <base> <to-base>')
 			.addFields(
-				{ name: 'Syntax:', value: '/convert-base <input> <base> <to-base>' },
+				{ name: 'Description:', value: 'Allows you to convert an integer from one base to another.' },
+				
+				{ name: '<input>:', value: '**Required**. The ``input`` value is the value that is being converted.' },
+				{ name: '<base>:', value: '**Required**. The ``base`` value is there to give the bot context as to which base the ``input`` value is currently in.' },
+				{ name: '<to-base>:', value: '**Required**. The ``to-base`` value is the base that the ``input`` value is to be converted into.' },
+				{ name: '*Additional Info*:', value: 'The only valid bases are integers between 2 and 32 (inclusive).' },
 			)
 		}
 		else if (command === 'change-case') {
 			var embed = new EmbedBuilder()
 			.setColor(0x000000)
 			.setTitle('/change-case')
-			.setDescription('Takes a string from the \'text\' parameter and converts it to either uppercase or lowercase based on what\'s inputed in the \'case\' parameter.')
+			.setDescription('/change-case <text> <case>')
 			.addFields(
-				{ name: 'Syntax:', value: '/change-case <text> <case>' },
+				{ name: 'Description:', value: 'Allows you to change the case of a string to either upper case or lower case.' },
+				
+				{ name: '<text>:', value: '**Required**. The ``text`` value is the string whose case is to be changed.' },
+				{ name: '<case>:', value: '**Required**. The ``case`` value tells the bot whether to convert the ``text`` value to upper case or lower case.' },
 			)
 		}
 		else if (command === 'regex-slicer') {
 			var embed = new EmbedBuilder()
 			.setColor(0x000000)
 			.setTitle('/regex-slicer')
-			.setDescription('Removes text from the \'input\' parameter matching the regex pattern given in the \'regex\' parameter.')
+			.setDescription('/regex-slicer <input> <regex>')
 			.addFields(
-				{ name: 'Syntax:', value: '/regex-slicer <input> <regex>' },
+				{ name: 'Description:', value: 'Allows you to remove parts of a string based on a regular expression pattern.' },
+				
+				{ name: '<input>:', value: '**Required**. The ``input`` value is the string to be edited.' },
+				{ name: '<regex>:', value: '**Required**. The ``regex`` value is the regular expression pattern that is followed when slicing the ``input`` value.' },
 			)
 		}
 		else if (command === 'ping') {
 			var embed = new EmbedBuilder()
 			.setColor(0x000000)
 			.setTitle('/ping')
-			.setDescription('A test command. It\'ll reply to you with \'pong\'.')
+			.setDescription('/ping')
 			.addFields(
-				{ name: 'Syntax:', value: '/ping' },
+				{ name: 'Description:', value: 'Simply just a test command to check if the bot is responding.' },
 			)
 		}
 		else if (command === 'random color') {
 			var embed = new EmbedBuilder()
 			.setColor(0x000000)
 			.setTitle('/random color')
-			.setDescription('Replies with an embed of a random color. You may also specify if you want to include transparency in the \'alpha\' parameter (default is false).')
+			.setDescription('/random color [alpha]')
 			.addFields(
-				{ name: 'Syntax:', value: '/random color [alpha]' },
+				{ name: 'Description:', value: 'Allows you to generate a random color.' },
+				
+				{ name: '[alpha]:', value: '*Optional*. The ``alpha`` value tells the bot whether to randomize the opacity of the color (default: false).' },
 			)
 		}
 		else if (command === 'random word') {
 			var embed = new EmbedBuilder()
 			.setColor(0x000000)
 			.setTitle('/random word')
-			.setDescription('Replies to you with \'amount\' amount of words (default is 1).')
+			.setDescription('/random word [amount]')
 			.addFields(
-				{ name: 'Syntax:', value: '/random word [amount]' },
+				{ name: 'Description:', value: 'Allows you to generate random words.' },
+				
+				{ name: '[amount]:', value: '*Optional*. The ``amount`` value tells the bot whether to generate multiple words and how many (default: 1).' },
 			)
 		}
 		else if (command === 'random letter') {
 			var embed = new EmbedBuilder()
 			.setColor(0x000000)
 			.setTitle('/random letter')
-			.setDescription('Replies to you with \'amount\' amount of English letters (default is 1).')
+			.setDescription('/random letter [amount]')
 			.addFields(
-				{ name: 'Syntax:', value: '/random letter [amount]' },
+				{ name: 'Description:', value: 'Allows you to generate random letters (in the English alphabet).' },
+				
+				{ name: '[amount]:', value: '*Optional*. The ``amount`` value tells the bot whether to generate multiple letters and how many (default: 1).' },
 			)
 		}
 		else if (command === 'random integer') {
 			var embed = new EmbedBuilder()
 			.setColor(0x000000)
 			.setTitle('/random integer')
-			.setDescription('Replies with a random integer between the value given in the \'minimum\' parameter and the value given in the \'maximum\' parameter.')
+			.setDescription('/random integer <minimum> <maximum>')
 			.addFields(
-				{ name: 'Syntax:', value: '/random integer <minimum> <maximum>' },
+				{ name: 'Description:', value: 'Allows you to generate a random integer.' },
+				
+				{ name: '<minimum>:', value: '**Required**. The ``minimum`` value tells the bot the lowest possible value to generate.' },
+				{ name: '<maximum>:', value: '**Required**. The ``maximum`` value tells the bot the highest possible value to generate.' },
 			)
 		}
 		else if (command === 'suggest') {
 			var embed = new EmbedBuilder()
 			.setColor(0x000000)
 			.setTitle('/suggest')
-			.setDescription('Sends a suggestion to Awsome_Creeper9.')
+			.setDescription('/suggest <suggestion>')
 			.addFields(
-				{ name: 'Syntax:', value: '/suggest <suggestion>' },
+				{ name: 'Description:', value: 'Allows you to send a suggestion directly to the bot\'s developer.' },
+				
+				{ name: '<suggestion>:', value: '**Required**. The ``suggestion`` value is what will be sent to the bot\'s developer.' },
+				{ name: '*Additional Info*:', value: 'Your user will be attached to the suggestion. The developer is able to blacklist you from sending suggestions.' },
 			)
 		}
 		else if (command === 'echo') {
 			var embed = new EmbedBuilder()
 			.setColor(0x000000)
 			.setTitle('/echo')
-			.setDescription('Repeats the message you sent in the \'message\' parameter.')
+			.setDescription('/echo <message>')
 			.addFields(
-				{ name: 'Syntax:', value: '/echo <message>' },
+				{ name: 'Description:', value: 'Sends a message directly back to the channel.' },
+				
+				{ name: '<message>:', value: '**Required**. The ``message`` value is what the bot will send back.' },
 			)
 		}
 		else if (command === 'kill') {
 			var embed = new EmbedBuilder()
 			.setColor(0x000000)
 			.setTitle('/kill')
-			.setDescription('Kills a selected user from the \'user\' parameter using the method from the \'method\' parameter (default is generic) with the item from the \'item-name\' parameter (if applicable; some methods require it).')
+			.setDescription('/kill <user> [method] [item-name]')
 			.addFields(
-				{ name: 'Syntax:', value: '/kill <user> [method] [item-name]' },
-				{ name: 'Valid Method Values:', value: 'random, generic, player generic, melee, ranged, cactus, cactus escape, fall, hit ground too hard, hit ground too hard escape, fell off ladder, fell off vines, fell off weeping vines, fell off twisting vines, fell off scaffolding, fell while climbing, fell out of water, doomed fall, void, void escape, magic, magic escape, player magic, explosion, player explosion, starvation, starve while fighting, lightning, lightning while fighting, wither, wither while fighting, firework, berry bush, berry bush escape, lava, lava escape, magma, magma escape, drowning, drowning escape, freezing, freezing escape, fire, burning, burned while fighting, fire while fighting, kinetic energy, kinetic energy escape, anvil, falling block, suffocation, suffocated while fighting, trident, stalagmite, stalagmite while fighting, stalactite, bed, cramming, cramming escape, thorns, blaze, bee, warden, wither skull, world border, world border while fighting, dehydration, dehydration escape, ' },
-				{ name: ' ', value: 'command, command while fighting, snowball, crossbow firework, warden escape, even more magic'}
+				{ name: 'Description:', value: 'Allows you to "kill" another user.' },
+				
+				{ name: '<user>:', value: '**Required**. The ``user`` value provides the user to be "killed".' },
+				{ name: '[method]:', value: '*Optional*. The ``method`` value sets the method of the ``user``\'s death (default: generic).' },
+				{ name: '[item-name]:', value: '*Optional*. The ``item-name`` value sets the name of the item used to "kill" the ``user`` (if applicable).' },
+				{ name: '*Additional Info*:', value: 'The full list of valid ``method`` values is on the [wiki](https://github.com/Awsome-Creeper9/Awesome-Bot/wiki/kill).' },
 			)
 		}
 		else if (command === 'help') {
 			var embed = new EmbedBuilder()
 			.setColor(0x000000)
 			.setTitle('/help')
-			.setDescription('Sends an embed with a list of commands, or with help for a specific command if specified in the \'command\' parameter.')
+			.setDescription('/help [command]')
 			.addFields(
-				{ name: 'Syntax:', value: '/help [command]' },
+				{ name: 'Description:', value: 'Sends a list of all the commands or the info on a specific command.' },
+				
+				{ name: '[command]:', value: '*Optional*. The ``command`` value allows you to obtain info on a specific command.' },
 			)
 		}
 		else if (command === 'status') {
 			var embed = new EmbedBuilder()
 			.setColor(0x000000)
 			.setTitle('/status')
-			.setDescription('Sets the bot\'s status and activity (Only Awsome_Creeper9 has the ability to run this command).')
+			.setDescription('/status <status> <type> [activity]')
 			.addFields(
-				{ name: 'Syntax:', value: '/status <status> <type> [activity]' },
-				{ name: 'Valid Type Values:', value: 'Online, Idle, Do Not Disturb, Invisible' },
-				{ name: 'Valid Activity Values:', value: 'Playing, Watching, Listening, Competing, Streaming, None' },
+				{ name: 'Description:', value: 'Allows the bot\'s status to be changed.' },
+				
+				{ name: '<status>:', value: '**Required**. The ``status`` value is the status message displayed.' },
+				{ name: '<type>:', value: '**Required**. The ``type`` value is the type of status (Online, Idle, DnD, or Invisible).' },
+				{ name: '[activity]:', value: '*Optional*. The ``activity`` value is what type of activity the bot is performing (Playing, Streaming, Listening, Watching, Competing, or None).' },
+				{ name: '*Additional Info*:', value: 'Only the bot\'s developer has access to use this command.' },
 			)
 		}
 		else if (command === 'msg') {
 			var embed = new EmbedBuilder()
 			.setColor(0x000000)
 			.setTitle('/msg')
-			.setDescription('DM\'s the user given in the \'user\' parameter with the message from the \'message\' parameter. the DM can be sent anonymously if the \'anonymous\' parameter is set to \'True\' (False by default).')
+			.setDescription('/msg <user> <message> [anonymous]')
 			.addFields(
-				{ name: 'Syntax:', value: '/msg <user> <message> [anonymous]' },
+				{ name: 'Description:', value: 'Allows you to have the bot DM another user.' },
+				
+				{ name: '<user>:', value: '**Required**. The ``user`` value provides the user that\'ll be DM\'d.' },
+				{ name: '<message>:', value: '**Required**. The ``message`` value is what the bot will send to the ``user``.' },
+				{ name: '[anonymous]:', value: '*Optional*. The ``anonymous`` value allows you to send the message anonymously (default: false).' },
+				{ name: '*Additional Info*:', value: 'A user may request to be placed on a blacklist to prevent being messaged via this command.' },
 			)
 		}
 		else if (command === 'rps') {
 			var embed = new EmbedBuilder()
 			.setColor(0x000000)
 			.setTitle('/rps')
-			.setDescription('Allows you to play Rock, Paper, Scissors against the bot.')
+			.setDescription('/rps <choice>')
 			.addFields(
-				{ name: 'Syntax:', value: '/rps <choice>' },
-				{ name: 'Valid Choice Values:', value: 'Rock, Paper, Scissors' },
+				{ name: 'Description:', value: 'Allows you to play rock, paper, scissors with the bot.' },
+				
+				{ name: '<choice>:', value: '**Required**. The ``choice`` value is your choice between rock, paper, or scissors.' },
 			)
 		}
 		else if (command === 'timer') {
 			var embed = new EmbedBuilder()
 			.setColor(0x000000)
 			.setTitle('/timer')
-			.setDescription('Set a timer for \'amount\' \'interval-types\', you can also feed it a reason so that you can remember what the timer was for.')
+			.setDescription('/timer <interval-type> <amount> [reason]')
 			.addFields(
-				{ name: 'Syntax:', value: '/timer <interval-type> <amount> [reason]' },
-				{ name: 'Valid Interval-Type Values:', value: 'Second, Minute, Hour, Day, Week' },
+				{ name: 'Description:', value: 'Allows you to set a timer.' },
+				
+				{ name: '<interval-type>:', value: '**Required**. The ``interval-type`` value is the type of interval to be used (Second, Minute, Hour, Day, or Week).' },
+				{ name: '<amount>:', value: '**Required**. The ``amount`` value is the amount of time in the specified ``interval-type``.' },
+				{ name: '[reason]:', value: '*Optional*. The ``reason`` value is the reason for the timer.' },
 			)
 		}
 		else if (command === 'gradient') {
 			var embed = new EmbedBuilder()
 			.setColor(0x000000)
 			.setTitle('/gradient')
-			.setDescription('Create a gradient with 2-10 colors. You\'ll be sent an error message if you typed something wrong. You may specify what tyoe of gradient you want in the \'type\' parameter (default is linear).')
+			.setDescription('/gradient <color1..2> [color3..10] [type]')
 			.addFields(
-				{ name: 'Syntax:', value: '/gradient <color1> <color2> [color3] [color4] [color5] [color6] [color7] [color8] [color9] [color10] [type]' },
-				{ name: 'Valid Type Values:', value: 'Linear, 45 Degrees, Radial' },
+				{ name: 'Description:', value: 'Allows you to create a gradient.' },
+				
+				{ name: '<color1>:', value: '**Required**. The ``color1`` and ``color2`` values are the first colors in the gradient.' },
+				{ name: '[color3..10]:', value: '*Optional*. The ``color3`` through ``color10`` values are the colors in the gradient after ``color2`` (in order).' },
+				{ name: '[type]:', value: '*Optional*. The ``type`` value is the type of gradient to be created (Linear, Radial, 45 Degrees, or Conic).' },
 			)
 		}
 		else if (command === 'caesar-cypher') {
 			var embed = new EmbedBuilder()
 				.setColor(0x000000)
 				.setTitle('/caesar-cypher')
-				.setDescription('Caesar cypher a string given in the \`string\` parameter by the \`shift\` parameter.')
+				.setDescription('/caesar-cypher <string> <shift>')
 				.addFields(
-					{name: 'Syntax:', value: '/gradient <string> <shift>'},
-					{name: 'Note:', value: 'You can only use english letters and spaces in the string used.'},
+					{ name: 'Description:', value: 'Allows you to encrypt or decrypt a string using a Caesar cypher.' },
+					
+					{ name: '<string>:', value: '**Required**. The ``string`` value is the string to be encrypted or decrypted.' },
+					{ name: '<shift>:', value: '**Required**. The ``shift`` value is the number of letters to shift the string by.' },
+					{ name: '*Additional Info*:', value: 'The shift value must be greater than (or equal to) 0. The string must only include English letters and spaces.' },
 				)
 		}
 		else {
 			var embed = new EmbedBuilder()
 			.setColor(0x000000)
 			.setTitle('Help:')
+			.setURL('https://github.com/Awsome-Creeper9/Awesome-Bot/wiki/')
 			.addFields(
 				{ name: 'help', value: '/help [command]' },
 				{ name: 'convert-base', value: '/convert-base <input> <base> <to-base>' },
@@ -201,7 +250,7 @@ module.exports = {
 				{ name: 'msg', value: '/msg <user> <message> [anonymous]' },
 				{ name: 'rps', value: '/rps <choice>' },
 				{ name: 'timer', value: '/timer <interval-type> <amount> [reason]' },
-				{ name: 'gradient', value: '/gradient <color1> <color2> [color3] [color4] [color5] [color6] [color7] [color8] [color9] [color10] [type]' },
+				{ name: 'gradient', value: '/gradient <color1..2> [color3..10] [type]' },
 				{ name: 'caesar-cypher', value: '/caesar-cypher <text> <shift>' },
 			)
 		}
