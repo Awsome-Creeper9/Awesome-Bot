@@ -46,6 +46,13 @@ client.once(Events.ClientReady, c => {
 	client.user.setActivity("/help", {
 		type: ActivityType.Playing,
 	});
+	const currentDate = new Date();
+	if (currentDate.getMonth() === 5) {
+		client.user.setAvatar('profile-pic/aroace-pfp.png');
+	}
+	else {
+		client.user.setAvatar('profile-pic/pfp.png');
+	}
 });
  
 // Log in to Discord with your client's token
