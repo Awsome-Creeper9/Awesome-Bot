@@ -234,6 +234,8 @@ module.exports = {
 				.setDescription('/hangman')
 				.addFields(
 					{ name: 'Description:', value: 'Allows you to play a game of hangman.' },
+
+					{ name: '*Additional Info*:', value: 'Cannot be used in DMs.' },
 				)
 		}
 		else {

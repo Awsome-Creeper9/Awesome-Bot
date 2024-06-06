@@ -1,4 +1,4 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder, DMChannel} = require('discord.js');
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -22,46 +22,51 @@ module.exports = {
 
 		let validLetters = 'abcdefghijklmnopqrstuvwxyz';
 
-		interaction.reply(`## Hangman\nWrong Guesses: ${responseObj.wrong}/6\nWord: ${responseObj.word}\nLetters Guessed: ${responseObj.guessed}`)
-			.then(() => {
-				const collector = interaction.channel.createMessageCollector({ filter: m => m.author.id === interaction.user.id && validLetters.includes(m.content.toLowerCase()) && m.content.length === 1, time: 300000 });
+		if (interaction.channel) {
+			interaction.reply(`## Hangman\nWrong Guesses: ${responseObj.wrong}/6\nWord: ${responseObj.word}\nLetters Guessed: ${responseObj.guessed}`)
+				.then(() => {
+					const collector = interaction.channel.createMessageCollector({ filter: m => m.author.id === interaction.user.id && validLetters.includes(m.content.toLowerCase()) && m.content.length === 1, time: 300000 });
 
-				collector.on('collect', m => {
-					if (word.toLowerCase().includes(m.content.toLowerCase())) {
-						for (let i = 0; i < wordLength; i++) {
-							if (word[i].toLowerCase() === m.content.toLowerCase()) {
-								currentWord = currentWord.substring(0, (i * 2) + 1) + word[i] + currentWord.substring((i * 2) + 2);
-								responseObj.word = currentWord.replace(/\\/g, '');
-								responseObj.word = responseObj.word.replace(/_/g, '\\_');
+					collector.on('collect', m => {
+						if (word.toLowerCase().includes(m.content.toLowerCase())) {
+							for (let i = 0; i < wordLength; i++) {
+								if (word[i].toLowerCase() === m.content.toLowerCase()) {
+									currentWord = currentWord.substring(0, (i * 2) + 1) + word[i] + currentWord.substring((i * 2) + 2);
+									responseObj.word = currentWord.replace(/\\/g, '');
+									responseObj.word = responseObj.word.replace(/_/g, '\\_');
+								}
 							}
 						}
-					}
-					else {
-						responseObj.wrong++;
-					}
-					responseObj.guessed.push(m.content);
+						else {
+							responseObj.wrong++;
+						}
+						responseObj.guessed.push(m.content);
 
-					interaction.editReply(`## Hangman\nWrong Guesses: ${responseObj.wrong}/6\nWord: ${responseObj.word}\nLetters Guessed: ${responseObj.guessed}`)
+						interaction.editReply(`## Hangman\nWrong Guesses: ${responseObj.wrong}/6\nWord: ${responseObj.word}\nLetters Guessed: ${responseObj.guessed}`)
 
-					if (responseObj.wrong === 6) {
-						collector.stop('fail');
-					}
-					if (responseObj.word === word) {
-						collector.stop('win');
-					}
-				})
+						if (responseObj.wrong === 6) {
+							collector.stop('fail');
+						}
+						if (responseObj.word === word) {
+							collector.stop('win');
+						}
+					})
 
-				collector.on('end', (collected, reason) => {
-					if (reason === 'win') {
-						interaction.channel.send('You Win!');
-					}
-					else if (reason === 'fail') {
-						interaction.channel.send(`You Lose! The word was \`\`${word}\`\``);
-					}
-					else {
-						interaction.channel.send(`You ran out of time! The word was \`\`${word}\`\``);
-					}
-				})
-			});
+					collector.on('end', (collected, reason) => {
+						if (reason === 'win') {
+							interaction.channel.send('You Win!');
+						}
+						else if (reason === 'fail') {
+							interaction.channel.send(`You Lose! The word was \`\`${word}\`\``);
+						}
+						else {
+							interaction.channel.send(`You ran out of time! The word was \`\`${word}\`\``);
+						}
+					})
+				});
+		}
+		else {
+			interaction.reply({ content: 'Hangman currently doesn\'t work in DMs. Please use this command in a server channel for the time being. Sorry.', ephemeral: true });
+		}
 	},
 };
