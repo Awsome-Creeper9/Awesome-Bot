@@ -227,6 +227,15 @@ module.exports = {
 					{ name: '*Additional Info*:', value: 'The shift value must be greater than (or equal to) 0. The string must only include English letters and spaces.' },
 				)
 		}
+		else if (command === 'hangman') {
+			var embed = new EmbedBuilder()
+				.setColor(0x000000)
+				.setTitle('/hangman')
+				.setDescription('/hangman')
+				.addFields(
+					{ name: 'Description:', value: 'Allows you to play a game of hangman.' },
+				)
+		}
 		else {
 			var embed = new EmbedBuilder()
 			.setColor(0x000000)
@@ -251,6 +260,7 @@ module.exports = {
 				{ name: 'timer', value: '/timer <interval-type> <amount> [reason]' },
 				{ name: 'gradient', value: '/gradient <color1..2> [color3..10] [type]' },
 				{ name: 'caesar-cypher', value: '/caesar-cypher <text> <shift>' },
+				{ name: 'hangman', value: '/hangman' },
 			)
 		}
 		
