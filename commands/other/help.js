@@ -238,6 +238,30 @@ module.exports = {
 					{ name: '*Additional Info*:', value: 'Cannot be used in DMs.' },
 				)
 		}
+		else if (command === 'mute') {
+			var embed = new EmbedBuilder()
+				.setColor(0x000000)
+				.setTitle('/mute')
+				.setDescription('/mute <user> [reason] [time]')
+				.addFields(
+					{ name: 'Description:', value: 'Mute a user on a server (only people with Timeout Member perms can use this command).' },
+
+					{ name: '<user>', value: '**Required**. The ``user`` value is the user to be muted.' },
+					{ name: '[reason]:', value: '*Optional*. The ``reason`` value is the reason for the mute.' },
+					{ name: '[time]:', value: '*Optional*. The ``time`` value is the length of the mute in hours (Max is 28 days. Default is 28 days).' },
+				)
+		}
+		else if (command === 'unmute') {
+			var embed = new EmbedBuilder()
+				.setColor(0x000000)
+				.setTitle('/unmute')
+				.setDescription('/unmute <user>')
+				.addFields(
+					{ name: 'Description:', value: 'Unmute a user on a server (only people with Timeout Member perms can use this command).' },
+
+					{ name: '<user>', value: '**Required**. The ``user`` value is the user to be unmuted.' },
+				)
+		}
 		else {
 			var embed = new EmbedBuilder()
 			.setColor(0x000000)
@@ -263,6 +287,8 @@ module.exports = {
 				{ name: 'gradient', value: '/gradient <color1..2> [color3..10] [type]' },
 				{ name: 'caesar-cypher', value: '/caesar-cypher <text> <shift>' },
 				{ name: 'hangman', value: '/hangman' },
+				{ name: 'mute', value: '/mute <user> [reason] [time]' },
+				{ name: 'unmute', value: '/unmute <user>' },
 			)
 		}
 		
