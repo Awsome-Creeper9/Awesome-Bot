@@ -54,7 +54,7 @@ module.exports = {
 			.setTitle('/ping')
 			.setDescription('/ping')
 			.addFields(
-				{ name: 'Description:', value: 'Simply just a test command to check if the bot is responding.' },
+				{ name: 'Description:', value: 'Provides the latency between sending the command and the reply.' },
 			)
 		}
 		else if (command === 'random color') {

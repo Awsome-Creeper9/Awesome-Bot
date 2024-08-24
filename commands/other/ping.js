@@ -3,8 +3,9 @@ const { SlashCommandBuilder } = require('discord.js');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('ping')
-		.setDescription('A test command'),
+		.setDescription('Provides the latency between sending the command and the reply'),
 	async execute(interaction) {
-		await interaction.reply('Pong!');
+		const sent = await interaction.reply({ content: 'Pinging...', fetchReply: true });
+		interaction.editReply(`Ping: ${sent.createdTimestamp - interaction.createdTimestamp}ms`);
 	},
 };
