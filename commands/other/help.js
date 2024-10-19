@@ -246,7 +246,7 @@ module.exports = {
 				.addFields(
 					{ name: 'Description:', value: 'Mute a user on a server (only people with Timeout Member perms can use this command).' },
 
-					{ name: '<user>', value: '**Required**. The ``user`` value is the user to be muted.' },
+					{ name: '<user>:', value: '**Required**. The ``user`` value is the user to be muted.' },
 					{ name: '[reason]:', value: '*Optional*. The ``reason`` value is the reason for the mute.' },
 					{ name: '[time]:', value: '*Optional*. The ``time`` value is the length of the mute in hours (Max is 28 days. Default is 28 days).' },
 				)
@@ -259,7 +259,42 @@ module.exports = {
 				.addFields(
 					{ name: 'Description:', value: 'Unmute a user on a server (only people with Timeout Member perms can use this command).' },
 
-					{ name: '<user>', value: '**Required**. The ``user`` value is the user to be unmuted.' },
+					{ name: '<user>:', value: '**Required**. The ``user`` value is the user to be unmuted.' },
+				)
+		}
+		else if (command === 'kick') {
+			var embed = new EmbedBuilder()
+				.setColor(0x000000)
+				.setTitle('/kick')
+				.setDescription('/kick <user> [reason]')
+				.addFields(
+					{ name: 'Description:', value: 'Kick a user on a server (only people with Kick Member perms can use this command).' },
+
+					{ name: '<user>', value: '**Required**. The ``user`` value is the user to be kicked.' },
+					{ name: '[reason]:', value: '*Optional*. The ``reason`` value is the reason for the kick.' },
+				)
+		}
+		else if (command === 'ban') {
+			var embed = new EmbedBuilder()
+				.setColor(0x000000)
+				.setTitle('/ban')
+				.setDescription('/ban <user> [reason]')
+				.addFields(
+					{ name: 'Description:', value: 'Ban a user on a server (only people with Ban Member perms can use this command).' },
+
+					{ name: '<user>', value: '**Required**. The ``user`` value is the user to be banned.' },
+					{ name: '[reason]:', value: '*Optional*. The ``reason`` value is the reason for the ban.' },
+				)
+		}
+		else if (command === 'unban') {
+			var embed = new EmbedBuilder()
+				.setColor(0x000000)
+				.setTitle('/unban')
+				.setDescription('/unban <user>')
+				.addFields(
+					{ name: 'Description:', value: 'Unban a user on a server (only people with Ban Member perms can use this command).' },
+
+					{ name: '<user>', value: '**Required**. The ``user`` value is the user to be unbanned.' },
 				)
 		}
 		else {
@@ -289,6 +324,9 @@ module.exports = {
 				{ name: 'hangman', value: '/hangman' },
 				{ name: 'mute', value: '/mute <user> [reason] [time]' },
 				{ name: 'unmute', value: '/unmute <user>' },
+				{ name: 'kick', value: '/kick <user> [reason]' },
+				{ name: 'ban', value: '/ban <user> [reason]' },
+				{ name: 'unban', value: '/unban <user>' },
 			)
 		}
 		

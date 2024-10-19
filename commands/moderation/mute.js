@@ -39,21 +39,21 @@ module.exports = {
 
         if (reason) {
             if (time >= 24) {
-                interaction.client.users.send(user.id, `You have been muted on \`\`${interaction.guild.name}\`\` for \`\`${time / 24} days\`\` for the reason \`\`${reason}\`\`.`);
+                // interaction.client.users.send(user.id, `You have been muted on \`\`${interaction.guild.name}\`\` for \`\`${time / 24} days\`\` for the reason \`\`${reason}\`\`.`);
                 interaction.reply({ content: `${user} has been muted for \`\`${time / 24} days\`\` for the reason \`\`${reason}\`\`.`, ephemeral: true });
             }
             else {
-                interaction.client.users.send(user.id, `You have been muted on \`\`${interaction.guild.name}\`\` for \`\`${time} hours\`\` for the reason \`\`${reason}\`\`.`);
+                // interaction.client.users.send(user.id, `You have been muted on \`\`${interaction.guild.name}\`\` for \`\`${time} hours\`\` for the reason \`\`${reason}\`\`.`);
                 interaction.reply({ content: `${user} has been muted for \`\`${time} hours\`\` for the reason \`\`${reason}\`\`.`, ephemeral: true });
             }
         }
         else {
             if (time >= 24) {
-                interaction.client.users.send(user.id, `You have been muted on \`\`${interaction.guild.name}\`\` for \`\`${time / 24} days\`\`.`);
+                // interaction.client.users.send(user.id, `You have been muted on \`\`${interaction.guild.name}\`\` for \`\`${time / 24} days\`\`.`);
                 interaction.reply({ content: `${user} has been muted for \`\`${time / 24} days\`\`.`, ephemeral: true });
             }
             else {
-                interaction.client.users.send(user.id, `You have been muted on \`\`${interaction.guild.name}\`\` for \`\`${time} hours\`\`.`);
+                // interaction.client.users.send(user.id, `You have been muted on \`\`${interaction.guild.name}\`\` for \`\`${time} hours\`\`.`);
                 interaction.reply({ content: `${user} has been muted for \`\`${time} hours\`\`.`, ephemeral: true });
             }
         }

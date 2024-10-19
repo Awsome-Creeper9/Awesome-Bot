@@ -24,7 +24,7 @@ module.exports = {
 
         await user.timeout(null);
 
-        interaction.client.users.send(user.id, `You have been unmuted on \`\`${interaction.guild.name}\`\`.`);
+        // interaction.client.users.send(user.id, `You have been unmuted on \`\`${interaction.guild.name}\`\`.`);
         interaction.reply({ content: `${user} has been unmuted.`, ephemeral: true });
     },
 };
