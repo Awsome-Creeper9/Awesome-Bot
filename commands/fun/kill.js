@@ -59,7 +59,7 @@ module.exports = {
 		else if (method === 'drowning') {message = `${user} drowned`}
 		else if (method === 'drowning escape') {message = `${user} drowned while trying to escape ${interaction.user}`}
 		else if (method === 'magma') {message = `${user} discovered the floor was lava`}
-		else if (method === 'magma escape') {message = `${user} walked into the dangerzon due to ${interaction.user}`}
+		else if (method === 'magma escape') {message = `${user} walked into the danger zone due to ${interaction.user}`}
 		else if (method === 'freezing') {message = `${user} froze to death`}
 		else if (method === 'freezing escape') {message = `${user} was frozen to death by ${interaction.user}`}
 		else if (method === 'fire') {message = `${user} went up in flames`}
