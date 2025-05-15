@@ -214,6 +214,17 @@ module.exports = {
 				{ name: '[type]:', value: '*Optional*. The ``type`` value is the type of gradient to be created (Linear, Radial, 45 Degrees, or Conic).' },
 			)
 		}
+		else if (command === 'color') {
+			var embed = new EmbedBuilder()
+				.setColor(0x000000)
+				.setTitle('/color')
+				.setDescription('/color <color>')
+				.addFields(
+					{ name: 'Description:', value: 'Allows you to display a color.' },
+
+					{ name: '<color>:', value: '**Required**. The ``color`` value is the color to display.' },
+				)
+		}
 		else if (command === 'caesar-cypher') {
 			var embed = new EmbedBuilder()
 				.setColor(0x000000)
@@ -320,6 +331,7 @@ module.exports = {
 				{ name: 'rps', value: '/rps <choice>' },
 				{ name: 'timer', value: '/timer <interval-type> <amount> [reason]' },
 				{ name: 'gradient', value: '/gradient <color1..2> [color3..10] [type]' },
+				{ name: 'color', value: '/color <color>' },
 				{ name: 'caesar-cypher', value: '/caesar-cypher <text> <shift>' },
 				{ name: 'hangman', value: '/hangman' },
 				{ name: 'mute', value: '/mute <user> [reason] [time]' },
