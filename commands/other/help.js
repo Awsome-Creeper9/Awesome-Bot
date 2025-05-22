@@ -308,6 +308,30 @@ module.exports = {
 					{ name: '<user>', value: '**Required**. The ``user`` value is the user to be unbanned.' },
 				)
 		}
+		else if (command === 'ai') {
+			var embed = new EmbedBuilder()
+				.setColor(0x000000)
+				.setTitle('/ai')
+				.setDescription('/ai <question>')
+				.addFields(
+					{ name: 'Description:', value: 'Send a prompt/question to AI (DeepSeek r1).' },
+
+					{ name: '<question>', value: '**Required**. The ``question`` value is the prompt/question to send to the AI.' },
+
+					{ name: '*Additional Info*:', value: 'The formatting can get a little weird, especially with math or computational science questions. Cannot write you code.' },
+				)
+		}
+		else if (command === 'random') {
+			var embed = new EmbedBuilder()
+				.setColor(0x000000)
+				.setTitle('/random help')
+				.addFields(
+					{ name: 'random color', value: '/random color [alpha]' },
+					{ name: 'random integer', value: '/random integer <minimum> <maximum>' },
+					{ name: 'random word', value: '/random word [amount]' },
+					{ name: 'random letter', value: '/random letter [amount]' },
+				)
+		}
 		else {
 			var embed = new EmbedBuilder()
 			.setColor(0x000000)
@@ -320,10 +344,7 @@ module.exports = {
 				{ name: 'regex-slicer', value: '/regex-slicer <input> <regex>' },
 				{ name: 'kill', value: '/kill [method] [item-name]' },
 				{ name: 'ping', value: '/ping' },
-				{ name: 'random color', value: '/random color [alpha]' },
-				{ name: 'random word', value: '/random word [amount]' },
-				{ name: 'random letter', value: '/random letter [amount]' },
-				{ name: 'random integer', value: '/random integer <minimum> <maximum>' },
+				{ name: 'random', value: '/random <subcommand> [additional-args]' },
 				{ name: 'echo', value: '/echo <message>' },
 				{ name: 'suggest', value: '/suggest' },
 				{ name: 'status', value: '/status <status> <type> [activity]' },
@@ -339,6 +360,7 @@ module.exports = {
 				{ name: 'kick', value: '/kick <user> [reason]' },
 				{ name: 'ban', value: '/ban <user> [reason]' },
 				{ name: 'unban', value: '/unban <user>' },
+				{ name: 'ai', value: '/ai <question>' },
 			)
 		}
 		
