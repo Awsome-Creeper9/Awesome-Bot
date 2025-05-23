@@ -12,7 +12,7 @@ module.exports = {
 	async execute(interaction) {
 		const question = interaction.options.getString('question');
 
-		const prompt = `Respond to this:\n\`\`${question}\`\`.\nAdditional Instructions:\n- The only formatting you are allowed to use is Markdown. Do not attempt to use LaTeX (ie. no '\\boxed', '\\times', etc.).\n- Don't use KaTeX/LaTeX formatting when generating response.`
+		const prompt = `Respond to this:\n\`\`${question}\`\`.\nFOR THE LOVE OF EVERYTHING DO NOT USE ANY SPECIAL FORMATTING FOR MATH/SCIENCE!!!! NO LaTeX, NO KaTeX, KEEP IT OUT OF YOUR RESPONSE ENTIRELY!!!!!!!!`
 
 		await interaction.deferReply();
 
@@ -31,14 +31,12 @@ function cleanText(text) {
 		.replace(/\\!/g, "")
 		.replace(/\\boxed/g, "")
 		.replace(/\\times/g, "\*")
-		.replace(/\\/g, "")
-		.replace(/\[/g, "")
-		.replace(/\]/g, "")
-		.replace(/\{/g, "")
-		.replace(/\}/g, "")
-		.replace(/beginalign\*/g, "")
-		.replace(/endalign\*/g, "")
-		.replace(/\&=/g, "=")
+		.replace(/\\over/g, "/")
+		.replace(/\\div/g, "/")
+		.replace(/\\begin{align}\*/g, "")
+		.replace(/\\end{align}\*/g, "")
 		.replace(/\n\n\n/g, "\n\n")
 	return intext.replace(/[\s\S]*<\/think>\n?/, '').trim();
 }
+
+// Note: dispite the prompt, the AI still uses KaTeX for formatting

@@ -318,7 +318,7 @@ module.exports = {
 
 					{ name: '<question>', value: '**Required**. The ``question`` value is the prompt/question to send to the AI.' },
 
-					{ name: '*Additional Info*:', value: 'The formatting can get a little weird, especially with math or computational science questions. Cannot write you code.' },
+					{ name: '*Additional Info*:', value: 'The formatting can get a little weird, especially with math or computational science questions.' },
 				)
 		}
 		else if (command === 'random') {
