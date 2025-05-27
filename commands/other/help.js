@@ -319,12 +319,14 @@ module.exports = {
 					{ name: '<question>', value: '**Required**. The ``question`` value is the prompt/question to send to the AI.' },
 
 					{ name: '*Additional Info*:', value: 'The formatting can get a little weird, especially with math or computational science questions.' },
+
+					{ name: '*Planned/Possible Deprecation*:', value: 'The AI uses much of my GPU, so if I can\'t limit GPU usage, I may remove this command.' },
 				)
 		}
 		else if (command === 'random') {
 			var embed = new EmbedBuilder()
 				.setColor(0x000000)
-				.setTitle('/random help')
+				.setTitle('/help random')
 				.addFields(
 					{ name: 'random color', value: '/random color [alpha]' },
 					{ name: 'random integer', value: '/random integer <minimum> <maximum>' },
