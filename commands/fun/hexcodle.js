@@ -79,13 +79,13 @@ module.exports = {
 						responseObj.guessed[responseObj.guessTotal] = [m.content, hints];
 						responseObj.guessTotal++;
 
-						interaction.editReply({ content:`## Hexcodle\nTotal Guesses: ${responseObj.guessTotal}/5\nPrevious Guesses:\n${responseObj.guessed[0]}\n${responseObj.guessed[1]}\n${responseObj.guessed[2]}\n${responseObj.guessed[3]}\n${responseObj.guessed[4]}\n${responseObj.guessed[4]}` })
+						interaction.editReply({ content:`## Hexcodle\nTotal Guesses: ${responseObj.guessTotal}/5\nPrevious Guesses:\n${responseObj.guessed[0]}\n${responseObj.guessed[1]}\n${responseObj.guessed[2]}\n${responseObj.guessed[3]}\n${responseObj.guessed[4]}\n` })
 
-						if (responseObj.guessTotal === 5) {
-							collector.stop('fail');
-						}
 						if (m.content.toLowerCase() === Hex.toLowerCase()) {
 							collector.stop('win');
+						}
+						if (responseObj.guessTotal === 5) {
+							collector.stop('fail');
 						}
 					})
 
