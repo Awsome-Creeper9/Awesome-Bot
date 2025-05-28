@@ -249,6 +249,17 @@ module.exports = {
 					{ name: '*Additional Info*:', value: 'Cannot be used in DMs.' },
 				)
 		}
+		else if (command === 'hexcodle') {
+			var embed = new EmbedBuilder()
+				.setColor(0x000000)
+				.setTitle('/hexcodle')
+				.setDescription('/hexcodle')
+				.addFields(
+					{ name: 'Description:', value: 'Allows you to play a game of hexcodle.' },
+
+					{ name: '*Additional Info*:', value: 'Cannot be used in DMs. Inspired by [Hexcodle by Hannah and Ekim](https://hexcodle.com/).' },
+				)
+		}
 		else if (command === 'mute') {
 			var embed = new EmbedBuilder()
 				.setColor(0x000000)
@@ -357,6 +368,7 @@ module.exports = {
 				{ name: 'color', value: '/color <color>' },
 				{ name: 'caesar-cypher', value: '/caesar-cypher <text> <shift>' },
 				{ name: 'hangman', value: '/hangman' },
+				{ name: 'hexcodle', value: '/hexcodle' },
 				{ name: 'mute', value: '/mute <user> [reason] [time]' },
 				{ name: 'unmute', value: '/unmute <user>' },
 				{ name: 'kick', value: '/kick <user> [reason]' },
