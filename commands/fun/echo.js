@@ -15,6 +15,6 @@ module.exports = {
 		await interaction.reply({ content: 'Message sent', ephemeral: true});
 
 		if (currentChannel) {await currentChannel.send(`${message}`);}
-		else {await interaction.client.users.send(interaction.user.id, `${message}`);}
+		else {await interaction.user.send(`${message}`);}
 	},
 };
