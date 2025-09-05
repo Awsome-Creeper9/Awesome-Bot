@@ -59,7 +59,7 @@ module.exports = {
 			await interaction.reply({ content: `Your \`${amount} ${type}\` timer for \`${reason}\` has been set! It ends <t:${timestamp}:R>.`});
 			setTimeout(async () => {
 				if (currentChannel) {await currentChannel.send(`${interaction.user}, your \`${amount} ${type}\` timer for \`${reason}\` has ended!`);}
-				else {await await interaction.client.users.send(interaction.user.id, `${interaction.user}, your \`${amount} ${type}\` timer for \`${reason}\` has ended!`);}
+				else {await interaction.user.send(`${interaction.user}, your \`${amount} ${type}\` timer for \`${reason}\` has ended!`);}
 			}, time)
 		}
 	},
