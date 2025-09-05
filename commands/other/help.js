@@ -319,21 +319,6 @@ module.exports = {
 					{ name: '<user>', value: '**Required**. The ``user`` value is the user to be unbanned.' },
 				)
 		}
-		else if (command === 'ai') {
-			var embed = new EmbedBuilder()
-				.setColor(0x000000)
-				.setTitle('/ai')
-				.setDescription('/ai <question>')
-				.addFields(
-					{ name: 'Description:', value: 'Send a prompt/question to AI (DeepSeek r1).' },
-
-					{ name: '<question>', value: '**Required**. The ``question`` value is the prompt/question to send to the AI.' },
-
-					{ name: '*Additional Info*:', value: 'The formatting can get a little weird, especially with math or computational science questions.' },
-
-					{ name: '*Planned/Possible Deprecation*:', value: 'The AI uses much of my GPU, so if I can\'t limit GPU usage, I may remove this command.' },
-				)
-		}
 		else if (command === 'random') {
 			var embed = new EmbedBuilder()
 				.setColor(0x000000)
@@ -374,7 +359,6 @@ module.exports = {
 				{ name: 'kick', value: '/kick <user> [reason]' },
 				{ name: 'ban', value: '/ban <user> [reason]' },
 				{ name: 'unban', value: '/unban <user>' },
-				{ name: 'ai', value: '/ai <question>' },
 			)
 		}
 		
