@@ -31,19 +31,24 @@ module.exports = {
 				canSend = false
 			}
 		}
-
-		if (canSend === true) {
-			if (anon === true) {
-				await interaction.client.users.send(userId, `${message}`)
-				await interaction.reply({ content: `Message sent to ${user} anonymously`, ephemeral: true })
+		try {
+			if (canSend === true) {
+				if (anon === true) {
+					await user.send(`${message}`)
+					await interaction.reply({ content: `Message sent to ${user} anonymously`, ephemeral: true })
+				}
+				else {
+					await user.send(`${interaction.user} sent: ${message}`)
+					await interaction.reply({ content: `Message sent to ${user}`, ephemeral: true });
+				}
 			}
 			else {
-				await interaction.client.users.send(userId, `${interaction.user} sent: ${message}`)
-				await interaction.reply({ content: `Message sent to ${user}`, ephemeral: true });
+				await interaction.reply({ content: `Cannot send message to ${user}; they asked to be on a blacklist`, ephemeral: true });
 			}
 		}
-		else {
-			await interaction.reply({ content: `Cannot send message to ${user}; they asked to be on a blacklist`, ephemeral: true });
+		catch (error) {
+			await interaction.reply({ content: `Cannot send message to ${user}; this is likely due to them not allowing DMs from server members or them blocking the bot.`, ephemeral: true });
 		}
+
 	},
 };
