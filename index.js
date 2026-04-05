@@ -53,7 +53,7 @@ client.once(Events.ClientReady, c => {
 		client.user.setAvatar('profile-pic/aroace-pfp.png');
         currentPFP = "aroace";
 	}
-    if (currentDate.getMonth() === 2 && currentDate.getDate() === 31 && currentPFP !== "trans") {
+    else if (currentDate.getMonth() === 2 && currentDate.getDate() === 31 && currentPFP !== "trans") {
         client.user.setAvatar('profile-pic/trans-pfp.png');
         currentPFP = "trans";
     }
@@ -70,7 +70,7 @@ client.once(Events.ClientReady, c => {
                 client.user.setAvatar('profile-pic/aroace-pfp.png');
                 currentPFP = "aroace";
             }
-            if (date.getMonth() === 2 && date.getDate() === 31 && currentPFP !== "trans") {
+            else if (date.getMonth() === 2 && date.getDate() === 31 && currentPFP !== "trans") {
                 client.user.setAvatar('profile-pic/trans-pfp.png');
                 currentPFP = "trans";
             }
