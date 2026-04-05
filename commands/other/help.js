@@ -163,6 +163,18 @@ module.exports = {
 				{ name: '*Additional Info*:', value: 'Only the bot\'s developer has access to use this command.' },
 			)
 		}
+        else if (command === 'change-pfp') {
+            var embed = new EmbedBuilder()
+                .setColor(0x000000)
+                .setTitle('/change-pfp')
+                .setDescription('/change-pfp <type>')
+                .addFields(
+                    { name: 'Description:', value: 'Allows the bot\'s profile picture to be changed.' },
+
+                    { name: '<type>:', value: '**Required**. The ``type`` value is the type of profile picture (Default, AroAce, or Trans).' },
+                    { name: '*Additional Info*:', value: 'Only the bot\'s developer has access to use this command.' },
+                )
+        }
 		else if (command === 'msg') {
 			var embed = new EmbedBuilder()
 			.setColor(0x000000)
@@ -346,6 +358,7 @@ module.exports = {
 				{ name: 'echo', value: '/echo <message>' },
 				{ name: 'suggest', value: '/suggest' },
 				{ name: 'status', value: '/status <status> <type> [activity]' },
+                { name: 'change-pfp', value: '/change-pfp <type>' },
 				{ name: 'msg', value: '/msg <user> <message> [anonymous]' },
 				{ name: 'rps', value: '/rps <choice>' },
 				{ name: 'timer', value: '/timer <interval-type> <amount> [reason]' },

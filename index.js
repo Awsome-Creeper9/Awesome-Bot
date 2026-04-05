@@ -41,18 +41,45 @@ for (const folder2 of guildCommandFolders) {
 	}
 }
 
+let currentPFP = "default";
+
 client.once(Events.ClientReady, c => {
 	console.log(`Ready! Logged in as ${c.user.tag}`);
 	client.user.setActivity("/help", {
 		type: ActivityType.Playing,
 	});
 	const currentDate = new Date();
-	if (currentDate.getMonth() === 5) {
+	if (currentDate.getMonth() === 5 && currentPFP !== "aroace") {
 		client.user.setAvatar('profile-pic/aroace-pfp.png');
+        currentPFP = "aroace";
 	}
+    if (currentDate.getMonth() === 2 && currentDate.getDate() === 31 && currentPFP !== "trans") {
+        client.user.setAvatar('profile-pic/trans-pfp.png');
+        currentPFP = "trans";
+    }
 	else {
 		client.user.setAvatar('profile-pic/pfp.png');
 	}
+
+    // Runs once every 30 minutes to check if a new day has started and change PFP according to the new day
+    // TODO: find a more robust method
+    setInterval(() => {
+        const date = new Date();
+        if (date.getHours() === 0) {
+            if (date.getMonth() === 5 && currentPFP !== "aroace") {
+                client.user.setAvatar('profile-pic/aroace-pfp.png');
+                currentPFP = "aroace";
+            }
+            if (date.getMonth() === 2 && date.getDate() === 31 && currentPFP !== "trans") {
+                client.user.setAvatar('profile-pic/trans-pfp.png');
+                currentPFP = "trans";
+            }
+            else {
+                client.user.setAvatar('profile-pic/pfp.png');
+                currentPFP = "default";
+            }
+        }
+    }, 1000 * 60 * 30);
 });
  
 // Log in to Discord with your client's token
