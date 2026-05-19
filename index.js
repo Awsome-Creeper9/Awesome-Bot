@@ -49,13 +49,17 @@ client.once(Events.ClientReady, c => {
 		type: ActivityType.Playing,
 	});
 	const currentDate = new Date();
-	if (currentDate.getMonth() === 5 && currentPFP !== "aroace") {
-		client.user.setAvatar('profile-pic/aroace-pfp.png');
-        currentPFP = "aroace";
+	if (currentDate.getMonth() === 5 && currentPFP !== "aroace-nb") {
+		client.user.setAvatar('profile-pic/aroace-nb-pfp.png');
+        currentPFP = "aroace-nb";
 	}
     else if (currentDate.getMonth() === 2 && currentDate.getDate() === 31 && currentPFP !== "trans") {
         client.user.setAvatar('profile-pic/trans-pfp.png');
         currentPFP = "trans";
+    }
+    else if (date.getMonth() === 3 && date.getDate() === 6 && currentPFP !== "aroace") {
+        client.user.setAvatar('profile-pic/aroace-pfp.png');
+        currentPFP = "aroace";
     }
 	else {
 		client.user.setAvatar('profile-pic/pfp.png');
@@ -66,13 +70,17 @@ client.once(Events.ClientReady, c => {
     setInterval(() => {
         const date = new Date();
         if (date.getHours() === 0) {
-            if (date.getMonth() === 5 && currentPFP !== "aroace") {
-                client.user.setAvatar('profile-pic/aroace-pfp.png');
-                currentPFP = "aroace";
+            if (date.getMonth() === 5 && currentPFP !== "aroace-nb") {
+                client.user.setAvatar('profile-pic/aroace-nb-pfp.png');
+                currentPFP = "aroace-nb";
             }
             else if (date.getMonth() === 2 && date.getDate() === 31 && currentPFP !== "trans") {
                 client.user.setAvatar('profile-pic/trans-pfp.png');
                 currentPFP = "trans";
+            }
+            else if (date.getMonth() === 3 && date.getDate() === 6 && currentPFP !== "aroace") {
+                client.user.setAvatar('profile-pic/aroace-pfp.png');
+                currentPFP = "aroace";
             }
             else {
                 client.user.setAvatar('profile-pic/pfp.png');

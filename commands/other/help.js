@@ -171,7 +171,7 @@ module.exports = {
                 .addFields(
                     { name: 'Description:', value: 'Allows the bot\'s profile picture to be changed.' },
 
-                    { name: '<type>:', value: '**Required**. The ``type`` value is the type of profile picture (Default, AroAce, or Trans).' },
+                    { name: '<type>:', value: '**Required**. The ``type`` value is the type of profile picture (Default, AroAce, AroAce & NonBinary, or Trans).' },
                     { name: '*Additional Info*:', value: 'Only the bot\'s developer has access to use this command.' },
                 )
         }
