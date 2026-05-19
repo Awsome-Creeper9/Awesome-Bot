@@ -57,7 +57,7 @@ client.once(Events.ClientReady, c => {
         client.user.setAvatar('profile-pic/trans-pfp.png');
         currentPFP = "trans";
     }
-    else if (date.getMonth() === 3 && date.getDate() === 6 && currentPFP !== "aroace") {
+    else if (currentDate.getMonth() === 3 && date.getDate() === 6 && currentPFP !== "aroace") {
         client.user.setAvatar('profile-pic/aroace-pfp.png');
         currentPFP = "aroace";
     }
