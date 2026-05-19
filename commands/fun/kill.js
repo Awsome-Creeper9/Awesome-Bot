@@ -97,6 +97,8 @@ module.exports = {
 		else if (method === "even more magic") {message = `${user} was killed by even more magic`}
 		else if (method === "mace") (message = `${user} was smashed by ${interaction.user} ${item ? `with [*${item}*]` : ''}`)
         else if (method === "spear") (message = `${user} was speared by ${interaction.user} ${item ? `using [*${item}*]` : ''}`)
+        else if (method === "hot sulfur cube") (message = `${user} died because not just the floor is lava`)
+        else if (method === "hot sulfur cube escape") (message = `${interaction.user} showed ${user} that not just the floor is lava`)
 		else {message = `${user} died`}
 		await interaction.reply(`${message}`);
 	},
