@@ -11,6 +11,7 @@ module.exports = {
 				.addChoices(
 					{ name: 'Default', value: 'default' },
 					{ name: 'AroAce', value: 'aroace' },
+					{ name: 'NonBinary', value: 'nb' },
                     { name: 'AroAce & NonBinary', value: 'aroace-nb' },
 					{ name: 'Trans', value: 'trans' },
 				)),
@@ -25,6 +26,9 @@ module.exports = {
             else if (type === "aroace") {
                 interaction.client.user.setAvatar('./profile-pic/aroace-pfp.png');
             }
+			else if (type === "nb") {
+				interaction.client.user.setAvatar('./profile-pic/nb-pfp.png');
+			}
             else if (type === "aroace-nb") {
                 interaction.client.user.setAvatar('./profile-pic/aroace-nb-pfp.png');
             }

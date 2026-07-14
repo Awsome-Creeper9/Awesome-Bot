@@ -57,10 +57,14 @@ client.once(Events.ClientReady, c => {
         client.user.setAvatar('profile-pic/trans-pfp.png');
         currentPFP = "trans";
     }
-    else if (currentDate.getMonth() === 3 && date.getDate() === 6 && currentPFP !== "aroace") {
+    else if (currentDate.getMonth() === 3 && currentDate.getDate() === 6 && currentPFP !== "aroace") {
         client.user.setAvatar('profile-pic/aroace-pfp.png');
         currentPFP = "aroace";
     }
+	else if (currentDate.getMonth() === 6 && currentDate.getDate() === 14 && currentPFP !== "nonbinary") {
+		client.user.setAvatar('profile-pic/nb-pfp.png');
+		currentPFP = "nonbinary";
+	}
 	else {
 		client.user.setAvatar('profile-pic/pfp.png');
 	}
@@ -82,6 +86,10 @@ client.once(Events.ClientReady, c => {
                 client.user.setAvatar('profile-pic/aroace-pfp.png');
                 currentPFP = "aroace";
             }
+			else if (date.getMonth() === 6 && date.getDate() === 14 && currentPFP !== "nonbinary") {
+				client.user.setAvatar('profile-pic/nb-pfp.png');
+				currentPFP = "nonbinary";
+			}
             else {
                 client.user.setAvatar('profile-pic/pfp.png');
                 currentPFP = "default";
