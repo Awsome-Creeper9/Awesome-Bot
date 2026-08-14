@@ -17,10 +17,10 @@ import java.util.stream.Stream;
 public class HelpCommand extends ListenerAdapter {
     public static CommandData commandData = Commands.slash("help", "Get info on commands and how to use them")
             .addOptions(
-                    new OptionData(OptionType.STRING, "command", "Specify a command you need help with")
+                    new OptionData(OptionType.STRING, "command", "Specify a command you need help with", false, true)
             );
 
-    private final String[] commandList = {"help", "ping", "echo", "kill", "rps"};
+    private final String[] commandList = {"help", "ping", "echo", "kill", "rps", "random word", "random integer", "random letter"};
 
     @Override
     public void onSlashCommandInteraction(SlashCommandInteractionEvent event) {
@@ -71,6 +71,31 @@ public class HelpCommand extends ListenerAdapter {
                         .addField("Description:", "Allows you to play rock, paper, scissors with the bot.", false)
                         .addField("<choice>:", "**Required**. The ``choice`` value is your choice between rock, paper, or scissors.", false);
             }
+            else if (command.equals("random word")) {
+                embedBuilder
+                        .setColor(0x000000)
+                        .setTitle("/random word")
+                        .setDescription("/random word [amount]")
+                        .addField("Description:", "Allows you to generate random words.", false)
+                        .addField("[amount]:", "*Optional*. The ``amount`` value tells the bot whether to generate multiple words and how many (default: 1).", false);
+            }
+            else if (command.equals("random integer")) {
+                embedBuilder
+                        .setColor(0x000000)
+                        .setTitle("/random integer")
+                        .setDescription("/random integer <minimum> <maximum>")
+                        .addField("Description:", "Allows you to generate a random integer.", false)
+                        .addField("<minimum>:", "**Required**. The ``minimum`` value tells the bot the lowest possible value to generate.", false)
+                        .addField("<maximum>:", "**Required**. The ``maximum`` value tells the bot the highest possible value to generate.", false);
+            }
+            else if (command.equals("random letter")) {
+                embedBuilder
+                        .setColor(0x000000)
+                        .setTitle("/random letter")
+                        .setDescription("/random letter [amount]")
+                        .addField("Description:", "Allows you to generate random letters (in the English alphabet).", false)
+                        .addField("[amount]:", "*Optional*. The ``amount`` value tells the bot whether to generate multiple letters and how many (default: 1).", false);
+            }
             else {
                 embedBuilder
                         .setColor(0x000000)
@@ -80,7 +105,10 @@ public class HelpCommand extends ListenerAdapter {
                         .addField("ping", "/ping", false)
                         .addField("echo", "/echo <message>", false)
                         .addField("kill", "/kill <user> [method] [item-name]", false)
-                        .addField("rps", "/rps <choice>", false);
+                        .addField("rps", "/rps <choice>", false)
+                        .addField("random word", "/random word [amount]", false)
+                        .addField("random integer", "/random integer <minimum> <maximum>", false)
+                        .addField("random letter", "/random letter [amount]", false);
             }
 
             event.replyEmbeds(embedBuilder.build()).queue();
