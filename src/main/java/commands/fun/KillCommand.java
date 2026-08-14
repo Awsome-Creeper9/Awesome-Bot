@@ -123,7 +123,7 @@ public class KillCommand extends ListenerAdapter{
             else if (method.equals("command")) {message = userString + " was killed";}
             else if (method.equals("command while fighting")) {message = userString + " was killed while fighting " + interactionUserString;}
             else if (method.equals("snowball")) {message = userString + " was pummeled by " + interactionUserString;}
-            else if (method.equals("crossbow firework") && !item.equals("")) {message = userString = " wnet off with a bang due to a firework fired from [*" + item + "*] by " + interactionUserString;}
+            else if (method.equals("crossbow firework") && !item.equals("")) {message = userString + " went off with a bang due to a firework fired from [*" + item + "*] by " + interactionUserString;}
             else if (method.equals("even more magic")) {message = userString + " was killed by even more magic";}
             else if (method.equals("mace")) {
                 if (!item.equals("")) {message = userString + " was smashed by " + interactionUserString + " with [*" + item + "*]";}
