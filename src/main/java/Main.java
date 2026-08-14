@@ -9,9 +9,9 @@ public class Main {
     public static void main(String[] args) {
         JDA api = JDABuilder.createDefault(Config.TOKEN)
                 .enableIntents(GatewayIntent.MESSAGE_CONTENT)
-                .addEventListeners(new PingCommand(), new EchoCommand(), new KillCommand(), new RPSCommand(), new HelpCommand(), new RandomCommand())
+                .addEventListeners(new PingCommand(), new EchoCommand(), new KillCommand(), new RPSCommand(), new HelpCommand(), new RandomCommand(), new ChangeCaseCommand())
                 .build();
 
-        api.updateCommands().addCommands(PingCommand.commandData, EchoCommand.commandData, KillCommand.commandData, RPSCommand.commandData, HelpCommand.commandData, RandomCommand.commandData).queue();
+        api.updateCommands().addCommands(PingCommand.commandData, EchoCommand.commandData, KillCommand.commandData, RPSCommand.commandData, HelpCommand.commandData, RandomCommand.commandData, ChangeCaseCommand.commandData).queue();
     }
 }

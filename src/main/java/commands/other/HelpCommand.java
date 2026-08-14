@@ -20,7 +20,7 @@ public class HelpCommand extends ListenerAdapter {
                     new OptionData(OptionType.STRING, "command", "Specify a command you need help with", false, true)
             );
 
-    private final String[] commandList = {"help", "ping", "echo", "kill", "rps", "random word", "random integer", "random letter"};
+    private final String[] commandList = {"help", "ping", "echo", "kill", "rps", "random word", "random integer", "random letter", "change-case"};
 
     @Override
     public void onSlashCommandInteraction(SlashCommandInteractionEvent event) {
@@ -96,6 +96,15 @@ public class HelpCommand extends ListenerAdapter {
                         .addField("Description:", "Allows you to generate random letters (in the English alphabet).", false)
                         .addField("[amount]:", "*Optional*. The ``amount`` value tells the bot whether to generate multiple letters and how many (default: 1).", false);
             }
+            else if (command.equals("change-case")) {
+                embedBuilder
+                        .setColor(0x000000)
+                        .setTitle("/change-case")
+                        .setDescription("/change-case <text> <case>")
+                        .addField("Description:", "Allows you to change the case of a string to either upper case or lower case.", false)
+                        .addField("<text>:", "**Required**. The ``text`` value is the string whose case is to be changed.", false)
+                        .addField("<case>:", "**Required**. The ``case`` value tells the bot whether to convert the ``text`` value to upper case or lower case.", false);
+            }
             else {
                 embedBuilder
                         .setColor(0x000000)
@@ -108,7 +117,8 @@ public class HelpCommand extends ListenerAdapter {
                         .addField("rps", "/rps <choice>", false)
                         .addField("random word", "/random word [amount]", false)
                         .addField("random integer", "/random integer <minimum> <maximum>", false)
-                        .addField("random letter", "/random letter [amount]", false);
+                        .addField("random letter", "/random letter [amount]", false)
+                        .addField("change-case", "/change-case <text> <case>", false);
             }
 
             event.replyEmbeds(embedBuilder.build()).queue();
