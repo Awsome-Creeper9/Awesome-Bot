@@ -8,6 +8,7 @@ import net.dv8tion.jda.api.interactions.commands.Command;
 import net.dv8tion.jda.api.interactions.commands.OptionType;
 import net.dv8tion.jda.api.interactions.commands.build.CommandData;
 import net.dv8tion.jda.api.interactions.commands.build.Commands;
+import net.dv8tion.jda.api.interactions.commands.build.OptionData;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,9 +16,11 @@ import java.util.stream.Stream;
 
 public class KillCommand extends ListenerAdapter{
     public static CommandData commandData = Commands.slash("kill", "Kills a user")
-            .addOption(OptionType.USER, "user", "User to be killed", true)
-            .addOption(OptionType.STRING, "method", "Method of how the user was killed", false, true)
-            .addOption(OptionType.STRING, "item-name", "Name of item used to kill the user");
+            .addOptions(
+                    new OptionData(OptionType.USER, "user", "User to be killed", true),
+                    new OptionData(OptionType.STRING, "method", "Method of how the user was killed", false, true),
+                    new OptionData(OptionType.STRING, "item-name", "Name of item used to kill the user")
+            );
 
     String[] methodList = {"random", "generic", "player generic", "melee", "ranged", "cactus", "cactus escape", "fall", "hit ground too hard", "hit ground too hard escape", "fell off ladder", "fell off vines", "fell off weeping vines", "fell off twisting vines", "fell off scaffolding", "fell while climbing", "fell out of water", "doomed fall", "void", "void escape", "magic", "magic escape", "player magic", "explosion", "player explosion", "starvation", "starve while fighting", "lightning", "lightning while fighting", "wither", "wither while fighting", "firework", "berry bush", "berry bush escape", "lava", "lava escape", "magma", "magma escape", "drowning", "drowning escape", "freezing", "freezing escape", "fire", "burning", "burned while fighting", "fire while fighting", "kinetic energy", "kinetic energy escape", "anvil", "falling block", "suffocation", "suffocated while fighting", "trident", "stalagmite", "stalagmite while fighting", "stalactite", "bed", "cramming", "cramming escape", "thorns", "fireball", "bee", "warden", "wither skull", "world border", "world border while fighting", "dehydration", "dehydration escape", "command", "command while fighting", "snowball", "crossbow firework", "warden escape", "even more magic", "mace", "spear", "hot sulfur cube", "hot sulfur cube escape"};
 
@@ -33,7 +36,7 @@ public class KillCommand extends ListenerAdapter{
             String[] methodList = {"generic", "player generic", "melee", "ranged", "cactus", "cactus escape", "fall", "hit ground too hard", "hit ground too hard escape", "fell off ladder", "fell off vines", "fell off weeping vines", "fell off twisting vines", "fell off scaffolding", "fell while climbing", "fell out of water", "doomed fall", "void", "void escape", "magic", "magic escape", "player magic", "explosion", "player explosion", "starvation", "starve while fighting", "lightning", "lightning while fighting", "wither", "wither while fighting", "firework", "berry bush", "berry bush escape", "lava", "lava escape", "magma", "magma escape", "drowning", "drowning escape", "freezing", "freezing escape", "fire", "burning", "burned while fighting", "fire while fighting", "kinetic energy", "kinetic energy escape", "anvil", "falling block", "suffocation", "suffocated while fighting", "trident", "stalagmite", "stalagmite while fighting", "stalactite", "bed", "cramming", "cramming escape", "thorns", "fireball", "bee", "warden", "wither skull", "world border", "world border while fighting", "dehydration", "dehydration escape", "command", "command while fighting", "snowball", "crossbow firework", "warden escape", "even more magic", "mace", "spear", "hot sulfur cube", "hot sulfur cube escape"};
 
             if (method.equals("random")) {
-                method = methodList[(int) Math.floor(Math.random() * methodList.length)];
+                method = methodList[(int) (Math.random() * methodList.length)];
             }
             String message;
             if (method.equals("void")) {message = userString + " fell out of the world";}
