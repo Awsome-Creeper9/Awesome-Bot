@@ -70,8 +70,8 @@ public class ColorCommand extends ListenerAdapter {
             embedBuilder
                     .setColor(color.getRGB())
                     .setThumbnail("attachment://output.png")
-                    .setTitle("#" + rStr + gStr + bStr + aStr)
-                    .addField("Color:", "#" + rStr + gStr + bStr + aStr, false);
+                    .setTitle("#" + rStr + gStr + bStr + ((event.getOption("alpha") != null) ? aStr : ""))
+                    .addField("Color:", "#" + rStr + gStr + bStr + ((event.getOption("alpha") != null) ? aStr : ""), false);
 
             event.replyEmbeds(embedBuilder.build()).addFiles(FileUpload.fromData(new File("output.png"), "output.png")).queue();
         }
