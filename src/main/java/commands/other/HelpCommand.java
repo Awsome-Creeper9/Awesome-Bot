@@ -20,7 +20,7 @@ public class HelpCommand extends ListenerAdapter {
                     new OptionData(OptionType.STRING, "command", "Specify a command you need help with", false, true)
             );
 
-    private final String[] commandList = {"help", "ping", "echo", "kill", "rps", "random word", "random integer", "random letter", "change-case"};
+    private final String[] commandList = {"help", "ping", "echo", "kill", "rps", "random color", "random word", "random integer", "random letter", "change-case", "color"};
 
     @Override
     public void onSlashCommandInteraction(SlashCommandInteractionEvent event) {
@@ -71,6 +71,14 @@ public class HelpCommand extends ListenerAdapter {
                         .addField("Description:", "Allows you to play rock, paper, scissors with the bot.", false)
                         .addField("<choice>:", "**Required**. The ``choice`` value is your choice between rock, paper, or scissors.", false);
             }
+            else if (command.equals("random color")) {
+                embedBuilder
+                        .setColor(0x000000)
+                        .setTitle("/random color")
+                        .setDescription("/random color [alpha]")
+                        .addField("Description:", "Allows you to generate a random color.", false)
+                        .addField("[alpha]:", "*Optional*. The ``alpha`` value tells the bot whether to randomize the opacity of the color (default: false).", false);
+            }
             else if (command.equals("random word")) {
                 embedBuilder
                         .setColor(0x000000)
@@ -105,6 +113,17 @@ public class HelpCommand extends ListenerAdapter {
                         .addField("<text>:", "**Required**. The ``text`` value is the string whose case is to be changed.", false)
                         .addField("<case>:", "**Required**. The ``case`` value tells the bot whether to convert the ``text`` value to upper case or lower case.", false);
             }
+            else if (command.equals("color")) {
+                embedBuilder
+                        .setColor(0x000000)
+                        .setTitle("/color")
+                        .setDescription("/color <red> <green> <blue> [alpha]")
+                        .addField("Description:", "Allows you to display a color.", false)
+                        .addField("<red>:", "**Required**. The ``red`` value is the red channel of the color to display (0–255).", false)
+                        .addField("<green>:", "**Required**. The ``green`` value is the green channel of the color to display (0–255).", false)
+                        .addField("<blue>:", "**Required**. The ``blue`` value is the blue channel of the color to display (0–255).", false)
+                        .addField("[alpha]:", "*Optional*. The ``alpha`` value is the alpha channel of the color to display (0–255, default: 255).", false);
+            }
             else {
                 embedBuilder
                         .setColor(0x000000)
@@ -115,10 +134,12 @@ public class HelpCommand extends ListenerAdapter {
                         .addField("echo", "/echo <message>", false)
                         .addField("kill", "/kill <user> [method] [item-name]", false)
                         .addField("rps", "/rps <choice>", false)
+                        .addField("random color", "/random color [alpha]", false)
                         .addField("random word", "/random word [amount]", false)
                         .addField("random integer", "/random integer <minimum> <maximum>", false)
                         .addField("random letter", "/random letter [amount]", false)
-                        .addField("change-case", "/change-case <text> <case>", false);
+                        .addField("change-case", "/change-case <text> <case>", false)
+                        .addField("color", "/color <red> <green> <blue> [alpha]", false);
             }
 
             event.replyEmbeds(embedBuilder.build()).queue();

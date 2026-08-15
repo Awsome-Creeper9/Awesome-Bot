@@ -45,3 +45,6 @@ bin/
 
 ### Config ###
 /src/main/java/Config.java
+
+### Output ###
+/output.png

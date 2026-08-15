@@ -1,5 +1,6 @@
 package commands.randomizers;
 
+import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.interactions.commands.OptionType;
@@ -7,6 +8,13 @@ import net.dv8tion.jda.api.interactions.commands.build.CommandData;
 import net.dv8tion.jda.api.interactions.commands.build.Commands;
 import net.dv8tion.jda.api.interactions.commands.build.OptionData;
 import net.dv8tion.jda.api.interactions.commands.build.SubcommandData;
+import net.dv8tion.jda.api.utils.FileUpload;
+
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class RandomCommand extends ListenerAdapter {
     public static CommandData commandData = Commands.slash("random", "Randomizers")
@@ -23,6 +31,10 @@ public class RandomCommand extends ListenerAdapter {
                     new SubcommandData("letter", "Responds with a random English letter")
                             .addOptions(
                                     new OptionData(OptionType.INTEGER, "amount", "Amount of letters")
+                            ),
+                    new SubcommandData("color", "Responds with a random color")
+                            .addOptions(
+                                    new OptionData(OptionType.BOOLEAN, "alpha", "Choose if you want to include transparency")
                             )
             );
 
@@ -66,6 +78,52 @@ public class RandomCommand extends ListenerAdapter {
                 }
 
                 event.reply(letter).queue();
+            }
+            else if (subcommand.equals("color")) {
+                boolean includeAlpha = (event.getOption("alpha") != null) ? event.getOption("alpha").getAsBoolean() : false;
+
+                int r = (int) (Math.random() * 256);
+                int g = (int) (Math.random() * 256);
+                int b = (int) (Math.random() * 256);
+                int a = 255;
+                if (includeAlpha) {
+                    a = (int) (Math.random() * 256);
+                }
+
+                Color color = new Color(r, g, b, a);
+
+                BufferedImage img = new BufferedImage(1000, 1000, BufferedImage.TYPE_INT_ARGB);
+                Graphics2D g2d = img.createGraphics();
+
+                g2d.setColor(color);
+                g2d.fillRect(0, 0, img.getWidth(), img.getHeight());
+                g2d.dispose();
+
+                try {
+                    ImageIO.write(img, "png", new File("output.png"));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                EmbedBuilder embedBuilder = new EmbedBuilder();
+
+                String rStr = Integer.toHexString(color.getRed()) + "";
+                String gStr = Integer.toHexString(color.getGreen()) + "";
+                String bStr = Integer.toHexString(color.getBlue()) + "";
+                String aStr = Integer.toHexString(color.getAlpha()) + "";
+
+                if (rStr.length() < 2) rStr = "0" + rStr;
+                if (gStr.length() < 2) gStr = "0" + gStr;
+                if (bStr.length() < 2) bStr = "0" + bStr;
+                if (aStr.length() < 2) aStr = "0" + aStr;
+
+                embedBuilder
+                        .setColor(color.getRGB())
+                        .setThumbnail("attachment://output.png")
+                        .setTitle("#" + rStr + gStr + bStr + (includeAlpha ? aStr : ""))
+                        .addField("Color:", "#" + rStr + gStr + bStr + (includeAlpha ? aStr : ""), false);
+
+                event.replyEmbeds(embedBuilder.build()).addFiles(FileUpload.fromData(new File("output.png"), "output.png")).queue();
             }
         }
     }
