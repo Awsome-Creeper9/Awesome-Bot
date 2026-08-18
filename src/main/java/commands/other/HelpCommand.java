@@ -20,7 +20,7 @@ public class HelpCommand extends ListenerAdapter {
                     new OptionData(OptionType.STRING, "command", "Specify a command you need help with", false, true)
             );
 
-    private final String[] commandList = {"help", "ping", "echo", "kill", "rps", "random color", "random word", "random integer", "random letter", "change-case", "color"};
+    private final String[] commandList = {"help", "ping", "echo", "kill", "rps", "random color", "random word", "random integer", "random letter", "change-case", "color", "gradient"};
 
     @Override
     public void onSlashCommandInteraction(SlashCommandInteractionEvent event) {
@@ -117,12 +117,18 @@ public class HelpCommand extends ListenerAdapter {
                 embedBuilder
                         .setColor(0x000000)
                         .setTitle("/color")
-                        .setDescription("/color <red> <green> <blue> [alpha]")
+                        .setDescription("/color <color>")
                         .addField("Description:", "Allows you to display a color.", false)
-                        .addField("<red>:", "**Required**. The ``red`` value is the red channel of the color to display (0–255).", false)
-                        .addField("<green>:", "**Required**. The ``green`` value is the green channel of the color to display (0–255).", false)
-                        .addField("<blue>:", "**Required**. The ``blue`` value is the blue channel of the color to display (0–255).", false)
-                        .addField("[alpha]:", "*Optional*. The ``alpha`` value is the alpha channel of the color to display (0–255, default: 255).", false);
+                        .addField("<color>:", "**Required**. The ``color`` value is the color to display. Format in hexadecimal.", false);
+            }
+            else if (command.equals("gradient")) {
+                embedBuilder
+                        .setColor(0x000000)
+                        .setTitle("/gradient")
+                        .setDescription("/gradient <color-1..2> [color-3..5]")
+                        .addField("Description:", "Allows you to display a color.", false)
+                        .addField("<color-1..2>:", "The ``color-1`` and ``color-2`` values are the first colors in the gradient. Format in hexadecimal.", false)
+                        .addField("[color-3..5]:", "*Optional*. The ``color-3`` through ``color-5`` values are the colors in the gradient after ``color-2`` (in order). Format in hexadecimal.", false);
             }
             else {
                 embedBuilder
@@ -139,7 +145,8 @@ public class HelpCommand extends ListenerAdapter {
                         .addField("random integer", "/random integer <minimum> <maximum>", false)
                         .addField("random letter", "/random letter [amount]", false)
                         .addField("change-case", "/change-case <text> <case>", false)
-                        .addField("color", "/color <red> <green> <blue> [alpha]", false);
+                        .addField("color", "/color <color>", false)
+                        .addField("gradient", "/color <color-1..2> [color-3..5]", false);
             }
 
             event.replyEmbeds(embedBuilder.build()).queue();

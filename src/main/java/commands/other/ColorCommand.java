@@ -18,27 +18,49 @@ import net.dv8tion.jda.api.utils.FileUpload;
 public class ColorCommand extends ListenerAdapter {
     public static CommandData commandData = Commands.slash("color", "Display a color")
             .addOptions(
-                    new OptionData(OptionType.INTEGER, "red", "Red channel of color to display (0–255)", true)
-                            .setMinValue(0)
-                            .setMaxValue(255),
-                    new OptionData(OptionType.INTEGER, "green", "Green channel of color to display (0–255)", true)
-                            .setMinValue(0)
-                            .setMaxValue(255),
-                    new OptionData(OptionType.INTEGER, "blue", "Blue channel of color to display (0–255)", true)
-                            .setMinValue(0)
-                            .setMaxValue(255),
-                    new OptionData(OptionType.INTEGER, "alpha", "Alpha channel of color to display (0–255)")
-                            .setMinValue(0)
-                            .setMaxValue(255)
+                    new OptionData(OptionType.STRING, "color", "Color to display", true)
             );
 
     @Override
     public void onSlashCommandInteraction(SlashCommandInteractionEvent event) {
         if (event.getName().equals(commandData.getName())) {
-            int red = event.getOption("red").getAsInt();
-            int green = event.getOption("green").getAsInt();
-            int blue = event.getOption("blue").getAsInt();
-            int alpha = (event.getOption("alpha") != null) ? event.getOption("alpha").getAsInt() : 255;
+
+            int red = 255;
+            int green = 255;
+            int blue = 255;
+            int alpha = 255;
+            boolean invalid = false;
+            try {
+                switch (event.getOption("color").getAsString().length() - 1) {
+                    case 8:
+                        red = Integer.parseInt(event.getOption("color").getAsString().substring(1, 3), 16);
+                        green = Integer.parseInt(event.getOption("color").getAsString().substring(3, 5), 16);
+                        blue = Integer.parseInt(event.getOption("color").getAsString().substring(5, 7), 16);
+                        alpha = Integer.parseInt(event.getOption("color").getAsString().substring(7, 9), 16);
+                        break;
+                    case 6:
+                        red = Integer.parseInt(event.getOption("color").getAsString().substring(1, 3), 16);
+                        green = Integer.parseInt(event.getOption("color").getAsString().substring(3, 5), 16);
+                        blue = Integer.parseInt(event.getOption("color").getAsString().substring(5, 7), 16);
+                        break;
+                    case 4:
+                        red = Integer.parseInt(event.getOption("color").getAsString().substring(1, 2), 16) * 16 + Integer.parseInt(event.getOption("color").getAsString().substring(1, 2), 16);
+                        green = Integer.parseInt(event.getOption("color").getAsString().substring(2, 3), 16) * 16 + Integer.parseInt(event.getOption("color").getAsString().substring(2, 3), 16);
+                        blue = Integer.parseInt(event.getOption("color").getAsString().substring(3, 4), 16) * 16 + Integer.parseInt(event.getOption("color").getAsString().substring(3, 4), 16);
+                        alpha = Integer.parseInt(event.getOption("color").getAsString().substring(4, 5), 16) * 16 + Integer.parseInt(event.getOption("color").getAsString().substring(4, 5), 16);
+                        break;
+                    case 3:
+                        red = Integer.parseInt(event.getOption("color").getAsString().substring(1, 2), 16) * 16 + Integer.parseInt(event.getOption("color").getAsString().substring(1, 2), 16);
+                        green = Integer.parseInt(event.getOption("color").getAsString().substring(2, 3), 16) * 16 + Integer.parseInt(event.getOption("color").getAsString().substring(2, 3), 16);
+                        blue = Integer.parseInt(event.getOption("color").getAsString().substring(3, 4), 16) * 16 + Integer.parseInt(event.getOption("color").getAsString().substring(3, 4), 16);
+                        break;
+                    default:
+                        invalid = true;
+                }
+            }
+            catch (NumberFormatException e) {
+                invalid = true;
+            }
 
             Color color = new Color(red, green, blue, alpha);
 
@@ -70,10 +92,15 @@ public class ColorCommand extends ListenerAdapter {
             embedBuilder
                     .setColor(color.getRGB())
                     .setThumbnail("attachment://output.png")
-                    .setTitle("#" + rStr + gStr + bStr + ((event.getOption("alpha") != null) ? aStr : ""))
-                    .addField("Color:", "#" + rStr + gStr + bStr + ((event.getOption("alpha") != null) ? aStr : ""), false);
+                    .setTitle("#" + rStr + gStr + bStr + (alpha != 255 ? aStr : ""))
+                    .addField("Color:", "#" + rStr + gStr + bStr + (alpha != 255 ? aStr : ""), false);
 
-            event.replyEmbeds(embedBuilder.build()).addFiles(FileUpload.fromData(new File("output.png"), "output.png")).queue();
+            if (!invalid) {
+                event.replyEmbeds(embedBuilder.build()).addFiles(FileUpload.fromData(new File("output.png"), "output.png")).queue();
+            }
+            else {
+                event.reply("Color is invalid, format in hexadecimal as #rrggbb, #rrggbbaa, #rgb, or #rgba").setEphemeral(true).queue();
+            }
         }
     }
 }
