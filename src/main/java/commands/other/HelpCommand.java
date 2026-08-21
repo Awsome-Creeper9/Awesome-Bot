@@ -125,10 +125,11 @@ public class HelpCommand extends ListenerAdapter {
                 embedBuilder
                         .setColor(0x000000)
                         .setTitle("/gradient")
-                        .setDescription("/gradient <color-1..2> [color-3..5]")
+                        .setDescription("/gradient <color-1..2> [color-3..5] [type]")
                         .addField("Description:", "Allows you to display a color.", false)
                         .addField("<color-1..2>:", "The ``color-1`` and ``color-2`` values are the first colors in the gradient. Format in hexadecimal.", false)
-                        .addField("[color-3..5]:", "*Optional*. The ``color-3`` through ``color-5`` values are the colors in the gradient after ``color-2`` (in order). Format in hexadecimal.", false);
+                        .addField("[color-3..5]:", "*Optional*. The ``color-3`` through ``color-5`` values are the colors in the gradient after ``color-2`` (in order). Format in hexadecimal.", false)
+                        .addField("[type]:", "*Optional*. The ``type`` value is the type of gradient to be created (Linear, Radial, or 45 Degrees; default: Linear).", false);
             }
             else {
                 embedBuilder
@@ -146,7 +147,7 @@ public class HelpCommand extends ListenerAdapter {
                         .addField("random letter", "/random letter [amount]", false)
                         .addField("change-case", "/change-case <text> <case>", false)
                         .addField("color", "/color <color>", false)
-                        .addField("gradient", "/color <color-1..2> [color-3..5]", false);
+                        .addField("gradient", "/color <color-1..2> [color-3..5] [type]", false);
             }
 
             event.replyEmbeds(embedBuilder.build()).queue();

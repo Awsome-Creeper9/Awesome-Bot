@@ -11,6 +11,7 @@ import net.dv8tion.jda.api.utils.FileUpload;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.geom.Ellipse2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -22,7 +23,11 @@ public class GradientCommand extends ListenerAdapter {
                     new OptionData(OptionType.STRING, "color-2", "2nd color", true),
                     new OptionData(OptionType.STRING, "color-3", "3rd color"),
                     new OptionData(OptionType.STRING, "color-4", "4th color"),
-                    new OptionData(OptionType.STRING, "color-5", "5th color")
+                    new OptionData(OptionType.STRING, "color-5", "5th color"),
+                    new OptionData(OptionType.STRING, "type", "Type of gradient")
+                            .addChoice("Linear", "linear")
+                            .addChoice("45 Degrees", "45-degree")
+                            .addChoice("Radial", "radial")
             );
 
     @Override
@@ -51,6 +56,8 @@ public class GradientCommand extends ListenerAdapter {
             int green5 = 255;
             int blue5 = 255;
             int alpha5 = 255;
+
+            String type = (event.getOption("type") != null) ? event.getOption("type").getAsString() : "linear";
 
             boolean invalid = false;
             try {
@@ -127,7 +134,9 @@ public class GradientCommand extends ListenerAdapter {
             BufferedImage img = new BufferedImage(1000, 1000, BufferedImage.TYPE_INT_ARGB);
             Graphics2D g2d = img.createGraphics();
 
-            LinearGradientPaint gradient = new LinearGradientPaint(0, 0, 1000, 0, new float[] {0f, 1f}, new Color[] {color1, color2});
+            LinearGradientPaint linGradient = new LinearGradientPaint(0, 0, 1000, 0, new float[] {0f, 1f}, new Color[] {color1, color2});
+            LinearGradientPaint angledLinGradient = new LinearGradientPaint(0, 0, 1000, 1000, new float[] {0f, 1f}, new Color[] {color1, color2});
+            RadialGradientPaint radGradient = new RadialGradientPaint(500, 500, 500, new float[] {0f, 1f}, new Color[] {color1, color2});
 
             String r1Str = Integer.toHexString(color1.getRed()) + "";
             String g1Str = Integer.toHexString(color1.getGreen()) + "";
@@ -199,7 +208,9 @@ public class GradientCommand extends ListenerAdapter {
 
                 color3 = new Color(red3, green3, blue3, alpha3);
 
-                gradient = new LinearGradientPaint(0, 0, 1000, 0, new float[] {0f, 0.5f, 1f}, new Color[] {color1, color2, color3});
+                linGradient = new LinearGradientPaint(0, 0, 1000, 0, new float[] {0f, 0.5f, 1f}, new Color[] {color1, color2, color3});
+                angledLinGradient = new LinearGradientPaint(0, 0, 1000, 1000, new float[] {0f, 0.5f, 1f}, new Color[] {color1, color2, color3});
+                radGradient = new RadialGradientPaint(500, 500, 500, new float[] {0f, 0.5f, 1f}, new Color[] {color1, color2, color3});
 
                 r3Str = Integer.toHexString(color3.getRed()) + "";
                 g3Str = Integer.toHexString(color3.getGreen()) + "";
@@ -246,7 +257,9 @@ public class GradientCommand extends ListenerAdapter {
 
                 color4 = new Color(red4, green4, blue4, alpha4);
 
-                gradient = new LinearGradientPaint(0, 0, 1000, 0, new float[] {0f, 0.33f, 0.67f, 1f}, new Color[] {color1, color2, color3, color4});
+                linGradient = new LinearGradientPaint(0, 0, 1000, 0, new float[] {0f, 0.33f, 0.67f, 1f}, new Color[] {color1, color2, color3, color4});
+                angledLinGradient = new LinearGradientPaint(0, 0, 1000, 1000, new float[] {0f, 0.33f, 0.67f, 1f}, new Color[] {color1, color2, color3, color4});
+                radGradient = new RadialGradientPaint(500, 500, 500, new float[] {0f, 0.33f, 0.67f, 1f}, new Color[] {color1, color2, color3, color4});
 
                 r4Str = Integer.toHexString(color4.getRed()) + "";
                 g4Str = Integer.toHexString(color4.getGreen()) + "";
@@ -293,7 +306,9 @@ public class GradientCommand extends ListenerAdapter {
 
                 color5 = new Color(red5, green5, blue5, alpha5);
 
-                gradient = new LinearGradientPaint(0, 0, 1000, 0, new float[] {0f, 0.25f, 0.5f, 0.75f, 1f}, new Color[] {color1, color2, color3, color4, color5});
+                linGradient = new LinearGradientPaint(0, 0, 1000, 0, new float[] {0f, 0.25f, 0.5f, 0.75f, 1f}, new Color[] {color1, color2, color3, color4, color5});
+                angledLinGradient = new LinearGradientPaint(0, 0, 1000, 1000, new float[] {0f, 0.25f, 0.5f, 0.75f, 1f}, new Color[] {color1, color2, color3, color4, color5});
+                radGradient = new RadialGradientPaint(500, 500, 500, new float[] {0f, 0.25f, 0.5f, 0.75f, 1f}, new Color[] {color1, color2, color3, color4, color5});
 
                 r5Str = Integer.toHexString(color5.getRed()) + "";
                 g5Str = Integer.toHexString(color5.getGreen()) + "";
@@ -306,7 +321,22 @@ public class GradientCommand extends ListenerAdapter {
                 if (a5Str.length() < 2) a5Str = "0" + a5Str;
             }
 
-            g2d.setPaint(gradient);
+            String embedTitle = "Linear Gradient";
+
+            if (type.equals("45-degree")) {
+                embedTitle = "Linear Gradient (45°)";
+
+                g2d.setPaint(angledLinGradient);
+            }
+            else if (type.equals("radial")) {
+                embedTitle = "Radial Gradient";
+
+                g2d.setPaint(radGradient);
+                g2d.clip(new Ellipse2D.Float(0, 0, img.getWidth(), img.getHeight()));
+            } else {
+                g2d.setPaint(linGradient);
+            }
+
             g2d.fillRect(0, 0, img.getWidth(), img.getHeight());
             g2d.dispose();
 
@@ -321,7 +351,7 @@ public class GradientCommand extends ListenerAdapter {
             embedBuilder
                     .setColor(color1.getRGB())
                     .setThumbnail("attachment://output.png")
-                    .setTitle("Linear Gradient")
+                    .setTitle(embedTitle)
                     .addField("Colors:", "#" + r1Str + g1Str + b1Str + (alpha1 != 255 ? a1Str : "")
                             + ", #" + r2Str + g2Str + b2Str + (alpha2 != 255 ? a2Str : "")
                             + (!r3Str.isEmpty() ? ", #" + r3Str + g3Str + b3Str + (alpha3 != 255 ? a3Str : "") : "")
